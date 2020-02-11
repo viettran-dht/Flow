@@ -1,1 +1,49 @@
-<p>sign-up works!</p>
+<div class="page-form">
+  <div class="form-input__container height-full-device flex-center">
+    <div class="col-50 col-graphic height-full-device">
+      <div class="triangle-graphic">
+      </div>
+      <div class="absolute-center pd-custom">
+        <img src="../../../assets/img/mobile.png" />
+      </div>
+    </div>
+    <div class="col-50 pd-custom">
+      <form class="form-input__form">
+        <h2 class="heading-custom form-input__heading">Sign up and get with the flow</h2>
+        <div class="input-block form-input__input">
+          <input placeholder="Full Name" />
+          <p class="error-text">This
+            field is required.</p>
+        </div>
+        <div class="input-block form-input__input">
+          <input placeholder="Company Name (If any)" />
+        </div>
+        <div class="input-block form-input__input">
+          <input placeholder="Email Address" formControlName="email" />
+          <p class="error-text">
+            Email is invalid.
+          </p>
+        </div>
+        <div class="input-block form-input__input mb-last-item">
+          <input placeholder="Password" type="password" formControlName="password" />
+          <p class="error-text">This
+            field is required.</p>
+        </div>
+        <div class="form-input__footer">
+          <div class="flex mb-25">
+            <label class="checkbox-custom">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <p class="small-content">By loggin in, you agree to our <ins>Term of Use</ins>
+              and to receive
+              emails updates and acknowledge that you read <ins class="cta-event">Our Privacy Policy</ins></p>
+          </div>
+          <button class="small-button-new button-primary-custom form-input__button">SIGN UP
+          </button>
+          <p>Already have an account? <ins>Login now!</ins></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
