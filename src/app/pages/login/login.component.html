@@ -22,13 +22,13 @@
             field is required.</p>
         </div>
         <div class="form-input__row flex-between">
-          <p class="cta-event">Forgot your password ? <ins>Click here.</ins></p>
+          <p class="cta-event">Forgot your password ? <ins (click)="gotoPage('forgot-password')">Click here.</ins></p>
         </div>
         <div class="form-input__footer">
           <button class="small-button-new button-primary-custom form-input__button">
             LOGIN
           </button>
-          <p>Not a member? <ins>Sign up now!</ins></p>
+          <p>Not a member? <ins (click)="gotoPage('sign-up')">Sign up now!</ins></p>
         </div>
       </form>
     </div>
