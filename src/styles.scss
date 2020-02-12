@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 body {
-	font-family: 'Barlow', sans-serif;
+	font-family: 'Barlow', sans-serif !important;
     font-size: 18px;
     line-height: 1.42;
 	
@@ -119,8 +120,9 @@ input {
 
 
 .heading {
-	font-size: 20px;
-	line-height: 1.2;
+	font-size: 54px;
+	letter-spacing: -1px;
+	line-height: 1;
 	font-weight: 700;
 }
 
@@ -145,6 +147,14 @@ input {
 	line-height: 1.42;
 	text-transform: uppercase;
 	font-weight: 700;
+}
+
+.opacity-40 {
+	opacity: 0.41;
+}
+
+.opacity-8 {
+	opacity: 0.08;
 }
 
 .p-small {
@@ -410,8 +420,10 @@ select {
 		border-width: 0 0 1px 0;
 		border-color: #fff;
 		background: transparent;
+		font-size: 18px;
 		&::placeholder {
 			font-weight: 200;
+			font-family: 'Barlow', sans-serif;
 		}
 	}
 }
