@@ -4,7 +4,7 @@ body {
 	font-family: 'Barlow', sans-serif !important;
     font-size: 18px;
     line-height: 1.42;
-	
+
 }
 p {
 	margin: 0;
@@ -30,7 +30,7 @@ input {
 
 .wrapper {
 	margin-left: 135px;
-	padding-bottom: 80px; 
+	padding-bottom: 80px;
 }
 
 .container-custom {
@@ -506,7 +506,7 @@ select {
     margin-bottom: 25px;
 }
 
-    
+
 .grid-block__heading {
     margin-bottom: 12px;
 }
@@ -700,18 +700,18 @@ li {
 
 		/* Track */
 	&::-webkit-scrollbar-track {
-		box-shadow: inset 0 0 5px grey; 
+		box-shadow: inset 0 0 5px grey;
 		border-radius: 10px;
 	}
-	
+
 	/* Handle */
 	&::-webkit-scrollbar-thumb {
-		background: #535353; 
+		background: #535353;
 		border-radius: 10px;
 	}
 
 	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
-		background: #b30000; 
+		background: #b30000;
 	}
-} 
+}
