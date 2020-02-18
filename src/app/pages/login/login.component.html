@@ -8,17 +8,17 @@
       </div>
     </div>
     <div class="col-50 pd-custom">
-      <form class="form-input__form">
+      <form class="form-input__form" [formGroup]="loginForm" (submit)="login()">
         <h2 class="heading-custom form-input__heading">Log in and get flowing</h2>
         <div class="input-block form-input__input">
-          <input placeholder="Email Address" />
-          <p class="error-text">
+          <input placeholder="Email Address" formControlName="email" />
+          <p class="error-text" *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.touched">
             Email is invalid.
           </p>
         </div>
         <div class="input-block form-input__input">
-          <input placeholder="Password" type="password" />
-          <p class="error-text">This
+          <input placeholder="Password" type="password" formControlName="password"/>
+          <p class="error-text" *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid">This
             field is required.</p>
         </div>
         <div class="form-input__row flex-between">

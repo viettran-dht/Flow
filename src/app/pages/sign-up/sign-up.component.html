@@ -8,25 +8,25 @@
       </div>
     </div>
     <div class="col-50 pd-custom">
-      <form class="form-input__form">
+      <form class="form-input__form" [formGroup]="signUpForm" (submit)="signup()">
         <h2 class="heading-custom form-input__heading">Sign up and get with the flow</h2>
         <div class="input-block form-input__input">
-          <input placeholder="Full Name" />
-          <p class="error-text">This
+          <input placeholder="Full Name" formControlName="fullName" />
+          <p class="error-text" *ngIf="signUpForm.controls.fullName.touched && !signUpForm.controls.fullName.valid">This
             field is required.</p>
         </div>
         <div class="input-block form-input__input">
-          <input placeholder="Company Name (If any)" />
+          <input placeholder="Company Name (If any)" formControlName="companyName"/>
         </div>
         <div class="input-block form-input__input">
           <input placeholder="Email Address" formControlName="email" />
-          <p class="error-text">
+          <p class="error-text" *ngIf="!signUpForm.controls.email.valid && signUpForm.controls.email.touched">
             Email is invalid.
           </p>
         </div>
         <div class="input-block form-input__input mb-last-item">
           <input placeholder="Password" type="password" formControlName="password" />
-          <p class="error-text">This
+          <p class="error-text" *ngIf="signUpForm.controls.password.touched && !signUpForm.controls.password.valid">This
             field is required.</p>
         </div>
         <div class="form-input__footer">
@@ -41,7 +41,7 @@
           </div>
           <button class="small-button-new button-primary-custom form-input__button">SIGN UP
           </button>
-          <p>Already have an account? <ins>Login now!</ins></p>
+          <p>Already have an account? <ins (click)="goto('login')">Login now!</ins></p>
         </div>
       </form>
     </div>
