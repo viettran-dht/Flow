@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 3;
+    &__cta {
+        width: 70px;
+        height: 70px;
+        background: #56A1A7;
+    }
+}
