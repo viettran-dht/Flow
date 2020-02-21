@@ -11,4 +11,19 @@
         height: 70px;
         background: #56A1A7;
     }
+    &__list {
+        padding: 0 20px;
+    }
+    &__item {
+        height: 40px;
+        padding: 0 12px;
+        margin-right: 10px;
+        background: #F9F9F9;
+        border-radius: 20px;
+        color: #56A1A7;
+        cursor: pointer;
+    }
+    &__img {
+        margin-right: 8px;
+    }
 }
