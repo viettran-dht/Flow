@@ -16,7 +16,7 @@
             field is required.</p>
         </div>
         <div class="input-block form-input__input">
-          <input placeholder="Company Name (If any)" formControlName="companyName"/>
+          <input placeholder="Company Name (If any)" formControlName="companyName" />
         </div>
         <div class="input-block form-input__input">
           <input placeholder="Email Address" formControlName="email" />
@@ -39,7 +39,9 @@
               and to receive
               emails updates and acknowledge that you read <ins class="cta-event">Our Privacy Policy</ins></p>
           </div>
-          <button class="small-button-new button-primary-custom form-input__button">SIGN UP
+          <button type="submit" class="small-button-new button-primary-custom form-input__button" [disabled]='loading'>
+            <app-loading-inside-btn *ngIf="loading"></app-loading-inside-btn>
+            {{loading?'':'SIGN UP'}}
           </button>
           <p>Already have an account? <ins (click)="goto('login')">Login now!</ins></p>
         </div>

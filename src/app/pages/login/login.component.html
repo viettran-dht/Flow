@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="col-50 pd-custom">
-      <form class="form-input__form" [formGroup]="loginForm" (submit)="login()">
+      <form class="form-input__form" [formGroup]="loginForm">
         <h2 class="heading-custom form-input__heading">Log in and get flowing</h2>
         <div class="input-block form-input__input">
           <input placeholder="Email Address" formControlName="email" />
@@ -25,8 +25,9 @@
           <p class="cta-event">Forgot your password ? <ins (click)="gotoPage('forgot-password')">Click here.</ins></p>
         </div>
         <div class="form-input__footer">
-          <button class="small-button-new button-primary-custom form-input__button">
-            LOGIN
+          <button (click)="login()" class="small-button-new button-primary-custom form-input__button" [disabled]='loading'>
+            <app-loading-inside-btn *ngIf="loading"></app-loading-inside-btn>
+            {{loading?'':'LOGIN'}}
           </button>
           <p>Not a member? <ins (click)="gotoPage('sign-up')">Sign up now!</ins></p>
         </div>
