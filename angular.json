@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toasta/styles/style-default.css"
+              "node_modules/ngx-toasta/styles/style-default.css",
+              "node_modules/ngx-datetime-picker/ngx-datetime-picker.css"
             ],
             "scripts": []
           },
@@ -95,7 +96,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toasta/styles/style-default.css"
+              "node_modules/ngx-toasta/styles/style-default.css",
+              "node_modules/ngx-datetime-picker/ngx-datetime-picker.css"
             ],
             "scripts": []
           }
