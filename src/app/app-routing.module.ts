@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './services/auth/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
+    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -16,10 +18,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule)
   },
   {
-    path: 'account-settings',
-    loadChildren: () => import('./pages/account-settings/account-settings.module').then(m => m.AccountSettingsModule)
-  },
-  {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   },
@@ -27,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -44,6 +44,10 @@ const routes: Routes = [
         path: 'user-groups',
         loadChildren: () => import('../pages/user-groups/user-groups.module').then(m => m.UserGroupsModule)
       },
+      {
+        path: 'account-settings',
+        loadChildren: () => import('../pages/account-settings/account-settings.module').then(m => m.AccountSettingsModule)
+      },
       { path: '', redirectTo: 'example', pathMatch: 'full' }
     ]
   }

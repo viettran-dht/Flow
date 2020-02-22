@@ -1,0 +1,10 @@
+<div class="force-to-the-bottom">
+    <tag-input [(ngModel)]="data" (onAdd)="onChanges()" (onRemove)="onChanges()">
+      <tag-input-dropdown
+        [autocompleteItems]="items"
+        [showDropdownIfEmpty]="true"
+        [dynamicUpdate]="false"
+      >
+      </tag-input-dropdown>
+    </tag-input>
+  </div>

@@ -48,8 +48,7 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       if (user.emailVerified) {
         this.firebaseService.updateRef('users', user.uid, { emailVerified: true });
-        // this.router.navigate(['/scheduler']);
-        this.helperService.alert('success', MESSAGE.sendSuccess);
+        this.router.navigate(['/account-settings']);
 
       } else {
         this.helperService.alert('error', MESSAGE.verifyEmailErr);

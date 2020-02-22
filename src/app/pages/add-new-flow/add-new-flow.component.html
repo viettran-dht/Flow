@@ -1,102 +1,112 @@
 <div class="page-account page-custom">
-  <div class="page-cta">
-    <div class="container-custom page-cta__container">
-      <a class="sub-heading page-cta__text" href="#"
-        >My Flows<span class="mlr-5">/</span></a
-      >
-      <a class="sub-heading page-cta__text active-cta" href="#"
-        >Add a New Flow</a
-      >
-    </div>
-  </div>
-  <div class="page-title mb-35">
-    <div class="container-custom page-title__container">
-      <div class="flex-align-center">
-        <span class="arrow arrow-left"></span>
-        <h3 class="title ml-10">Add descriptions to your Flow</h3>
+  <form [formGroup]="addFlowForm" (submit)="save()">
+    <div class="page-cta">
+      <div class="container-custom page-cta__container">
+        <a class="sub-heading page-cta__text" href="#">My Flows<span class="mlr-5">/</span></a>
+        <a class="sub-heading page-cta__text active-cta" href="#">Add a New Flow</a>
       </div>
     </div>
-  </div>
-  <div class="form-custom">
-    <div class="container-custom form-custom__container">
-      <div class="block-form">
-        <div class="form-custom__row flex-between mb-40">
-          <div class="form-custom__col">
-            <div class="block-input title-bold">
-              <input placeholder="Flow Name" />
-            </div>
-          </div>
-        </div>
-        <div class="form-custom__row flex-between mb-40">
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">CLIENT</p>
-            <div class="block-select flex-align-center flex-between">
-              <p>Client Name</p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">BRAND</p>
-            <div class="block-select flex-align-center flex-between">
-              <p>Brand Name</p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">CAMPAIGN</p>
-            <div class="block-select flex-align-center flex-between">
-              <p>Campaign Name</p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-        </div>
-        <div class="form-custom__row flex-between mb-40">
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">REGION</p>
-            <div class="block-select flex-align-center flex-between">
-              <p>Country & TimeZone</p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">FLOW START DATE</p>
-            <div class="block-select flex-align-center flex-between">
-              <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">FLOW END DATE</p>
-            <div class="block-select flex-align-center flex-between">
-              <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-        </div>
-        <div class="form-custom__row flex-between mb-40">
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">TAGS</p>
-            <div class="block-select flex-align-center flex-between">
-              <p>Add a Tag</p>
-              <span class="arrow arrow-down"></span>
-            </div>
-          </div>
-          <div class="form-custom__col">
-            <p class="semi-bold sub-heading mb-10">NOTE</p>
-            <div class="block-input">
-                <div class="multi-input"contenteditable="true">Write Your Notes</div>
-            </div>
-          </div>
-          <div class="form-custom__col flex-align-end">
-            <div class="flex-align-center flex-end btn-footer">
-              <button class="btn-transparent black-text sub-heading">
-                cancel
-              </button>
-              <button class="btn-primary">SAVE</button>
-            </div>
-          </div>
+    <div class="page-title mb-35">
+      <div class="container-custom page-title__container">
+        <div class="flex-align-center">
+          <span class="arrow arrow-left"></span>
+          <h3 class="title ml-10">Add descriptions to your Flow</h3>
         </div>
       </div>
     </div>
-  </div>
+    <div class="form-custom">
+      <div class="container-custom form-custom__container">
+        <div class="block-form">
+          <div class="form-custom__row flex-between mb-40">
+            <div class="form-custom__col">
+              <div class="block-input title-bold">
+                <input placeholder="Flow Name" formControlName="flowName"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-custom__row flex-between mb-40">
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">CLIENT</p>
+              <div #zoneSelect class="block-select flex-align-center flex-between" id="client">
+                <input formControlName="client" (focus)="onFocus('client')" placeholder="Client Name">
+                <span class="arrow arrow-down"></span>
+                <app-select-custom *ngIf="showSelectBox?.client" (onselect)="onSelect($event,'client')" (add)="onAdd($event)"
+                  [list]="listClient" [data]="addFlowForm.value.client"></app-select-custom>
+              </div>
+            </div>
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">BRAND</p>
+              <div class="block-select flex-align-center flex-between" id="brand">
+                <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')">
+                <span class="arrow arrow-down"></span>
+                <app-select-custom *ngIf="showSelectBox?.brand" (onselect)="onSelect($event,'brand')" (add)="onAdd($event)"
+                  [list]="listClient" [data]="addFlowForm.value.brand"></app-select-custom>
+              </div>
+            </div>
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">CAMPAIGN</p>
+              <div class="block-select flex-align-center flex-between" id="campaign">
+                <!-- <p>Campaign Name</p> -->
+                <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')">
+                <span class="arrow arrow-down"></span>
+                <app-select-custom *ngIf="showSelectBox?.campaign" (onselect)="onSelect($event,'campaign')" (add)="onAdd($event)"
+                  [list]="listClient" [data]="addFlowForm.value.campaign"></app-select-custom>
+              </div>
+            </div>
+          </div>
+          <div class="form-custom__row flex-between mb-40">
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">REGION</p>
+              <div class="block-select flex-align-center flex-between">
+                <!-- <p>Country & TimeZone</p> -->
+                <select formControlName="region">
+                  <option *ngFor="let timezone of userTimezone" [value]='timezone.value'>{{timezone.text}}</option>
+                </select>
+                <!-- <span class="arrow arrow-down"></span> -->
+              </div>
+            </div>
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">FLOW START DATE</p>
+              <div class="block-select flex-align-center flex-between">
+                <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p>
+                <span class="arrow arrow-down"></span>
+              </div>
+            </div>
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">FLOW END DATE</p>
+              <div class="block-select flex-align-center flex-between">
+                <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p>
+                <span class="arrow arrow-down"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-custom__row flex-between mb-40">
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">TAGS</p>
+              <div class="block-select flex-align-center flex-between">
+                <!-- <p>Add a Tag</p> -->
+                <app-tag-input (onchange)="onTagsChange($event)"></app-tag-input>
+                <!-- <span class="arrow arrow-down"></span> -->
+              </div>
+            </div>
+            <div class="form-custom__col">
+              <p class="semi-bold sub-heading mb-10">NOTE</p>
+              <div class="block-input">
+                <!-- <div class="multi-input" contenteditable="true">Write Your Notes</div> -->
+                <textarea class="multi-input" formControlName='notes'>Write Your Notes</textarea>
+              </div>
+            </div>
+            <div class="form-custom__col flex-align-end">
+              <div class="flex-align-center flex-end btn-footer">
+                <button class="btn-transparent black-text sub-heading" type="reset">
+                  cancel
+                </button>
+                <button class="btn-primary" type="submit">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
