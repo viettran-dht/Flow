@@ -48,6 +48,22 @@ const routes: Routes = [
         path: 'account-settings',
         loadChildren: () => import('../pages/account-settings/account-settings.module').then(m => m.AccountSettingsModule)
       },
+      {
+        path: 'schedule-broadcast',
+        loadChildren: () => import('../pages/schedule-broadcast/schedule-broadcast.module').then(m => m.ScheduleBroadcastModule)
+      },
+      {
+        path: 'automated-response',
+        loadChildren: () => import('../pages/automated-response/automated-response.module').then(m => m.AutomatedResponseModule)
+      },
+      {
+        path: 'plan-selection',
+        loadChildren: () => import('../pages/plan-selection/plan-selection.module').then(m => m.PlanSelectionModule)
+      },
+      {
+        path: 'sms-history',
+        loadChildren: () => import('../pages/sms-history/sms-history.module').then(m => m.SmsHistoryModule)
+      },
       { path: '', redirectTo: 'example', pathMatch: 'full' }
     ]
   }
