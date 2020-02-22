@@ -10,6 +10,11 @@ body {
     font-family: "Barlow", sans-serif !important;
   }
 }
+
+.page-custom {
+  padding-top: 70px;
+}
+
 p {
   margin: 0;
 }
@@ -19,7 +24,17 @@ p {
   padding: 0;
 }
 
+.question-mark {
+  width: 17px;
+  height: 17px;
+  background: #e8e8e8;
+  border-radius: 50%;
+  color: #767880;
+  font-size: 12px;
+}
+
 input {
+  color: #535353;
   &:focus {
     outline: none;
   }
@@ -112,6 +127,11 @@ input {
 .flex-align-end {
   @extend .flex;
   align-items: flex-end;
+}
+
+.flex-align-start {
+  @extend .flex;
+  align-items: flex-start;
 }
 
 .btn-custom-primary {
@@ -278,6 +298,10 @@ input {
   margin-bottom: 40px;
 }
 
+.mb-60 {
+  margin-bottom: 60px;
+}
+
 .mtb-10 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -287,12 +311,21 @@ input {
   padding-bottom: 40px;
 }
 
+.plr-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .arrow {
   width: 10px;
   height: 10px;
   display: inline-block;
   border-top: 2px solid #bcbcbc;
   border-right: 2px solid #bcbcbc;
+}
+
+.light-grey-text {
+  color: #BCBCBC !important;
 }
 
 .arrow-left {
@@ -388,6 +421,15 @@ button {
   width: 100%;
   padding: 0 0 11.5px;
   border-bottom: 1px solid #535353;
+  input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    background: transparent;
+    font-size: 16px;
+    font-family: "Barlow", sans-serif !important;
+  }
 }
 
 .input-block {
@@ -784,4 +826,15 @@ li {
 }
 .ng2-tag-input{
   border-bottom:none !important;
+}
+
+.small-checkbox.checkbox-custom .checkmark {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #E8E8E8;
+  &:after {
+    width: 10px;
+    height: 10px;
+    background: #52a1a7;
+  }
 }
