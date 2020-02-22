@@ -194,3 +194,39 @@
     padding-top: 12.5px;
   }
 }
+
+.table {
+  &__block {
+    box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  &__container {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      font-weight: 600;
+      color: #bcbcbc;
+      background: #fff;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      font-size: 12px;
+    }
+    tr {
+      &:nth-child(odd) {
+        td {
+          background: #F9F9F9;
+        }
+      }
+      &:nth-child(even) {
+        td {
+          background: #fff;
+        }
+      }
+    }
+  }
+}
