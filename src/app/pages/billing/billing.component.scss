@@ -16,6 +16,20 @@
 }
 
 .block-plan {
+  &__checkbox {
+    padding: 0 10px;
+  }
+  &__card {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .footer__col {
+      max-width: 100%;
+      padding: 0 13px;
+      border: 0;
+    }
+  }
   &__header {
     padding: 6px;
     text-align: center;
@@ -149,5 +163,34 @@
   .premium-item & {
     background: #7d45c1;
     border: 1px solid #7d45c1;
+  }
+}
+
+.card-info {
+  flex: 1;
+  margin-left: 60px;
+  &__row {
+    max-width: 60%;
+    min-width: 260px;
+    padding: 5px 0;
+    &.border-bt {
+      border-top: 1px solid #E8E8E8;
+      border-bottom: 1px solid #E8E8E8;
+    }
+  }
+  &__col {
+    width: calc(50% - 16px);
+  }
+  &__text {
+    font-weight: 700;
+    color: #52a1a7;
+  }
+  &__detail {
+    border-top: 1px solid #E8E8E8;
+  }
+  &__inner {
+    max-width: 80%;
+    min-width: 300px;
+    padding-top: 12.5px;
   }
 }
