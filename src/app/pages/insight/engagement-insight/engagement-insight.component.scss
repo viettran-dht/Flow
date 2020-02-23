@@ -1,0 +1,93 @@
+.chart {
+    &__container {
+        padding: 0 10px;
+        @media screen and (min-width: 1024px) {
+            padding: 0 40px;
+        }
+        @media screen and (min-width: 1280px){
+            padding: 0 85px;
+        }
+    }
+    &__icon {
+        .circle {
+            width: 5px;
+            height: 5px;
+            margin-bottom: 2px;
+            display: block;
+            border-radius: 50%;
+            background: #bcbcbc;
+        }
+    }
+    &__col {
+        width: calc(100% - 15px);
+        margin: 10px;
+        border-radius: 6px;
+        box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+        @media screen and (min-width: 768px) {
+            width: calc(100%/2 - 20px);
+        }
+        @media screen and (min-width: 1024px) {
+            width: calc(100%/3 - 20px);
+        }
+        @media screen and (min-width: 1500px){
+            max-width: 325px;
+        }
+    }
+    &__header {
+        padding: 10px;
+    }
+    &__body {
+        padding: 0 10px;
+    }
+    &__footer {
+        padding: 10px;
+    }
+}
+
+.box-dropdown {
+    &__container {
+        padding: 0 10px;
+        @media screen and (min-width: 1024px) {
+            padding: 0 40px;
+        }
+        @media screen and (min-width: 1280px){
+            padding: 0 85px;
+        }
+    }
+    &__item {
+        width: 100%;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+        @media screen and (min-width: 768px) {
+            width: calc(50% - 50px);
+        }
+        @media screen and (min-width: 1500px){
+            width: calc(25% - 50px);
+        }
+    }
+    &__header {
+        height: 30px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #bcbcbc;
+    }
+    &__row {
+        margin-bottom: 5px;
+    }
+}
+
+.form-block-table {
+    .form-custom__row {
+        padding: 0 10px;
+    }
+    padding: 0 10px;
+    @media screen and (min-width: 1024px) {
+        padding: 0 40px;
+    }
+    @media screen and (min-width: 1280px){
+        padding: 0 85px;
+    }
+}
