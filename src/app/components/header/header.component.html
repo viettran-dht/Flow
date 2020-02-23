@@ -3,39 +3,44 @@
     <div class="flex-between header__row">
       <div class="flex-align-center header__col">
         <a href="#" class="flex-center header__cta">
-          <img class="item-primary"src="../../../assets/img/img-icon/logo.png" />
-          <img class="item-secondary"src="../../../assets/img/img-icon/logo-active.png" />
+          <img class="item-primary" src="../../../assets/img/img-icon/logo.png" />
+          <img class="item-secondary" src="../../../assets/img/img-icon/logo-active.png" />
         </a>
         <nav class="flex header__list">
-          <div class="flex-align-center header__item active" (click)="goto('my-flows')">
+          <div class="flex-align-center header__item" [class.active]="currentPage==='my-flows'"
+            (click)="goto('my-flows')">
             <div class="header__img">
               <img class="item-primary" src="../../../assets/img/img-icon/chat.png" />
               <img class="item-secondary" src="../../../assets/img/img-icon/chat-active.png" />
             </div>
-            <span class="sub-heading" >My Flows</span>
+            <span class="sub-heading">My Flows</span>
           </div>
-          <div class="flex-align-center header__item" (click)="goto('insight')">
+          <div class="flex-align-center header__item" [class.active]="currentPage==='insight'"
+            (click)="goto('insight')">
             <div class="header__img">
               <img class="item-primary" src="../../../assets/img/img-icon/lamp.png" />
               <img class="item-secondary" src="../../../assets/img/img-icon/lamp-active.png" />
             </div>
             <span class="sub-heading">Insights</span>
           </div>
-          <div class="flex-align-center header__item" (click)="goto('user-groups')">
+          <div class="flex-align-center header__item" [class.active]="currentPage==='user-groups'"
+            (click)="goto('user-groups')">
             <div class="header__img">
               <img class="item-primary" src="../../../assets/img/img-icon/group-user.png" />
               <img class="item-secondary" src="../../../assets/img/img-icon/group-user-active.png" />
             </div>
             <span class="sub-heading">User Groups</span>
           </div>
-          <div class="flex-align-center header__item" (click)="goto('broadcast')">
+          <div class="flex-align-center header__item" [class.active]="currentPage==='broadcast'"
+            (click)="goto('broadcast')">
             <div class="header__img">
               <img class="item-primary" src="../../../assets/img/img-icon/angten.png" />
               <img class="item-secondary" src="../../../assets/img/img-icon/angten-active.png" />
             </div>
             <span class="sub-heading">Broadcast</span>
           </div>
-          <div class="flex-align-center header__item" (click)="goto('billing')">
+          <div class="flex-align-center header__item" [class.active]="currentPage==='billing'"
+            (click)="goto('billing')">
             <div class="header__img">
               <img class="item-primary" src="../../../assets/img/img-icon/billing.png" />
               <img class="item-secondary" src="../../../assets/img/img-icon/billing-active.png" />
