@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DateTimePickerModule } from 'ngx-datetime-picker';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 
 
@@ -15,6 +16,7 @@ import { DateTimePickerModule } from 'ngx-datetime-picker';
     ReactiveFormsModule,
     ComponentsModule,
     DateTimePickerModule,
+    DirectivesModule,
     RouterModule.forChild([{ path: '', component: AddNewFlowComponent }])
   ]
 })

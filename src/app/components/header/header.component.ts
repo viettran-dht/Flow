@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,8 +11,15 @@ export class HeaderComponent implements OnInit {
   currentPage: any = 'my-flows';
   constructor(
     public router: Router,
-    public authService: AuthService
-  ) { }
+    public authService: AuthService,
+    public activatedRoute: ActivatedRoute,
+    public location: Location
+  ) {
+    this.router.events.subscribe(val => {
+      const url = this.router.url.split('/');
+      this.currentPage = url[1];
+    });
+  }
 
   ngOnInit() {
     const path = window.location.pathname;
@@ -25,7 +32,6 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.authService.logout().then(res => {
-      console.log('logout', res);
       this.router.navigate(['/login']);
     });
   }

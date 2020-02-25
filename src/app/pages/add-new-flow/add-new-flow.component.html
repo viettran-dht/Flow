@@ -30,7 +30,7 @@
           <div class="form-custom__row flex-between mb-40">
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">CLIENT</p>
-              <div class="block-select flex-align-center flex-between" id="client" #zoneSelect >
+              <div class="block-select flex-align-center flex-between" id="client" (appClickOutside)="onClick($event)" >
                 <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')">
                 <span class="arrow arrow-down"></span>
                 <app-select-custom *ngIf="showSelectBox?.client" (onselect)="onSelect($event,'client')"
@@ -41,7 +41,7 @@
             </div>
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">BRAND</p>
-              <div class="block-select flex-align-center flex-between" id="brand" #zoneSelect >
+              <div class="block-select flex-align-center flex-between" id="brand" (appClickOutside)="onClick($event)"  >
                 <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')">
                 <span class="arrow arrow-down"></span>
                 <app-select-custom *ngIf="showSelectBox?.brand" (onselect)="onSelect($event,'brand')"
@@ -52,7 +52,7 @@
             </div>
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">CAMPAIGN</p>
-              <div class="block-select flex-align-center flex-between" id="campaign" #zoneSelect >
+              <div class="block-select flex-align-center flex-between" id="campaign" (appClickOutside)="onClick($event)"  >
                 <!-- <p>Campaign Name</p> -->
                 <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')">
                 <span class="arrow arrow-down"></span>

@@ -9,18 +9,20 @@ import { DateTimePickerModule} from 'ngx-datetime-picker';
 // firebase
 import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastaModule.forRoot(),
-    DateTimePickerModule
+    DateTimePickerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
