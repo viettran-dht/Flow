@@ -27,6 +27,7 @@ export class AccountSettingsComponent implements OnInit {
   public loading = false;
   public listCountries: ISelect[];
   public showSelectBox = false;
+  public isRemoveLogo = false;
   constructor(
     private fb: FormBuilder,
     private helperService: HelperService,
@@ -52,11 +53,11 @@ export class AccountSettingsComponent implements OnInit {
       companyName: this.userInfo.companyName || '',
       email: this.userInfo.email,
       country: this.userInfo.country || '',
-      fullName: this.userInfo.displayName || '',
+      displayName: this.userInfo.displayName || '',
       password: '',
       newPassword: '',
       confirmPassword: '',
-      jobTitle: '',
+      jobTitle: this.userInfo.jobTitle
     });
   }
 
@@ -75,6 +76,9 @@ export class AccountSettingsComponent implements OnInit {
       if (this.fileData) {
         const avtUrl = await this.firebaseService.uploadLogo(this.imageUrl, 'userAvt/');
         this.firebaseService.updateLogo('users', this.currentUser.uid, avtUrl);
+      } else if (this.isRemoveLogo) {
+        this.firebaseService.updateLogo('users', this.currentUser.uid, '');
+        this.isRemoveLogo = false;
       }
       await this.firebaseService.updateUserInfo(user);
       if (this.accountForm.value.newPassword) {
@@ -101,7 +105,7 @@ export class AccountSettingsComponent implements OnInit {
       companyName: ['', Validators.required],
       email: ['', Validators.email],
       country: [''],
-      fullName: ['', Validators.required],
+      displayName: ['', Validators.required],
       password: ['', Validators.required],
       newPassword: [''],
       confirmPassword: [''],
@@ -147,6 +151,8 @@ export class AccountSettingsComponent implements OnInit {
   }
   removeImage() {
     this.image.nativeElement.value = '';
-    this.imageUrl = '../../../assets/img/blank-profile.png'
+    this.imageUrl = '../../../assets/img/blank-profile.png';
+    this.userInfo.logo = '';
+    this.isRemoveLogo = true;
   }
 }

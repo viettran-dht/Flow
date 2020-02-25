@@ -81,10 +81,10 @@
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">FULL NAME</p>
               <div class="block-input">
-                <input placeholder="John Doe" formControlName="fullName" />
+                <input placeholder="John Doe" formControlName="displayName" />
               </div>
               <p class="error-text"
-                *ngIf="(accountForm?.controls?.fullName?.touched || submitted) && !accountForm?.controls?.fullName?.valid">
+                *ngIf="(accountForm?.controls?.displayName?.touched || submitted) && !accountForm?.controls?.displayName?.valid">
                 This
                 field is required.</p>
             </div>

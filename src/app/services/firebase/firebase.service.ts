@@ -121,6 +121,7 @@ createClient(clientId, clientData) {
       phoneNumber: user.phoneNumber,
       companyName: user.companyName,
       country: user.country,
+      jobTitle: user.jobTitle,
       lastupdate: firebase.firestore.Timestamp.fromDate(new Date())
     };
     return this.updateRef('users', user.uid, userUpdateData);
