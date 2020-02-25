@@ -1,0 +1,66 @@
+.card-flow {
+    max-width: 190px;
+    text-align: center;
+}
+
+.flow-title {
+    max-width: 236px;
+}
+
+.card-flow__inner {
+    padding: 50px 0 65px;
+    color: #fff;
+    background: #52a1a7;
+    border-radius: 6px;
+    text-align: center;
+}
+
+
+.card-flow__btn {
+    width: 100%;
+    height: 29px;
+    border: none;
+    border-radius: 6px;
+}
+
+.card-count {
+    width: 175px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.card-count__conatiner {
+    text-align: center;
+}
+
+.card-count__inner {
+    position: relative;
+    &:before, &:after {
+        content: '';
+        background: #bcbcbc;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &:before {
+        width: 1px;
+        height: 100%;
+    }
+    &:after {
+        height: 1px;
+        width: 100%;
+    }
+}
+
+.card-count__col {
+    width: calc(50% - 16px);
+    padding: 8px;
+}
+
+.card-count__btn {
+    width: 100%;
+    padding: 5.5px 10px;
+}

@@ -63,6 +63,10 @@ input {
   }
 }
 
+.thin-weight {
+  font-weight: 300;
+}
+
 .semi-bold {
   font-weight: 600;
 }
@@ -177,6 +181,10 @@ input {
   color: #ffffff;
 }
 
+.large-text {
+  font-size: 44px;
+}
+
 .more-lagre-heading {
   @extend .large-heading;
   font-size: 78px;
@@ -200,6 +208,11 @@ input {
 .sub-heading {
   font-size: 12px;
   line-height: 1.3;
+}
+
+.small-sub-heading {
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 .title {
@@ -333,7 +346,7 @@ input {
 }
 
 .light-grey-text {
-  color: #BCBCBC !important;
+  color: #bcbcbc !important;
 }
 
 .arrow-left {
@@ -714,10 +727,10 @@ li {
         }
       }
     }
-	.multi-input {
-		padding-bottom: 11.5px;
-		color: #bcbcbc;
-	}
+    .multi-input {
+      padding-bottom: 11.5px;
+      color: #bcbcbc;
+    }
     input {
       &::placeholder {
         color: #bcbcbc;
@@ -779,10 +792,10 @@ li {
   position: relative;
   background-color: #fff;
   border-radius: 6px;
-  border-bottom: 5px solid #E8E8E8;
+  border-bottom: 5px solid #e8e8e8;
   box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
   &:after {
-    content: '';
+    content: "";
     width: 75%;
     height: 5px;
     position: absolute;
@@ -796,7 +809,7 @@ li {
     padding: 3.5px 0;
     text-align: center;
     color: #fff;
-    background: #52A1A7;
+    background: #52a1a7;
     border: 1px solid #52a1a7;
     border-radius: 4px;
     font-size: 10px;
@@ -819,7 +832,7 @@ li {
 .footer__col {
   max-width: 195px;
   padding: 0 35px;
-  border-right: 1px solid #E8E8E8;
+  border-right: 1px solid #e8e8e8;
   &:last-child {
     border-right: none;
   }
@@ -832,15 +845,15 @@ li {
   background: #fff;
   box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
 }
-.ng2-tag-input{
-  border-bottom:none !important;
+.ng2-tag-input {
+  border-bottom: none !important;
 }
 
 .small-checkbox.checkbox-custom .checkmark {
   width: 16px;
   height: 16px;
   top: 0;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   &:after {
     width: 10px;
     height: 10px;
@@ -848,8 +861,6 @@ li {
   }
 }
 
-
-  
 .table {
   &__block {
     box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
@@ -866,7 +877,8 @@ li {
       color: #bcbcbc;
       background: #fff;
     }
-    th, td {
+    th,
+    td {
       padding: 12px;
       text-align: left;
       font-size: 12px;
@@ -874,7 +886,7 @@ li {
     tr {
       &:nth-child(odd) {
         td {
-          background: #F9F9F9;
+          background: #f9f9f9;
         }
       }
       &:nth-child(even) {
@@ -884,4 +896,13 @@ li {
       }
     }
   }
+}
+
+.grey-bg {
+  background: #535353;
+  color: #fff;
+}
+.yellow-bg {
+  background: #ffe200;
+  color: #535353;
 }
