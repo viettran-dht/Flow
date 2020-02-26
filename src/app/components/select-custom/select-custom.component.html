@@ -1,4 +1,8 @@
-<ul>
-    <li *ngFor="let item of list" (click)="onSelect(item)">{{item.Name}}</li>
-    <li *ngIf="showAddButton"><i class="fa fa-plus" (click)="onAdd()">{{data}}</i></li>
-</ul>
+<div class="flex-center select-custom">
+    <input placeholder="Clients" />
+    <span class="arrow arrow-down"></span>
+    <ul>
+        <li *ngFor="let item of list" (click)="onSelect(item)">{{item.Name}}</li>
+        <li *ngIf="showAddButton"><i class="fa fa-plus" (click)="onAdd()">{{data}}</i></li>
+    </ul>
+</div>
