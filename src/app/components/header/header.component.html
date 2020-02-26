@@ -49,8 +49,8 @@
           </div>
         </nav>
       </div>
-      <div class="flex-align-center header__col">
-        <div class="mr-10 flex-align-center cta-event">
+      <div class="flex-align-center header__col" [class.active]="currentPage==='account-settings'">
+        <div class="mr-10 flex-align-center cta-event" (click)="goto('account-settings')">
           <img class="header__avatar" src="../../../assets/img/blank-profile.png" />
           <span class="header__user">USER NAME</span>
         </div>

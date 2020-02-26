@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import * as valuesLd from 'lodash/values';
+import { IUser } from 'src/app/interfaces/user.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -97,5 +98,35 @@ createClient(clientId, clientData) {
     updateUserRef[`users/${uId}/paymentFlow/${paymentInfo.id}`] = { type: 'Paypal', id: paymentInfo.id, plan: paymentInfo.planDetail };
     firebase.database().ref().update(updateUserRef);
     return firebase.database().ref('payment/' + paymentInfo.id).set(paymentInfo);
+  }
+  uploadLogo(logo, path) {
+    const name = new Date().getTime();
+    const ref = firebase.storage().ref(path + name);
+    const uploadTask = ref.putString(logo.split(',')[1], 'base64');
+    return new Promise((resolve, reject) => {
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, (taskSnapshot) => {
+        console.log(taskSnapshot);
+      }, err => {
+        console.log(err);
+        reject(err);
+      }, async () => {
+        const logoUrl = await uploadTask.snapshot.ref.getDownloadURL();
+        resolve(logoUrl);
+      });
+    });
+  }
+  updateUserInfo(user: IUser) {
+    const userUpdateData = {
+      displayName: user.displayName,
+      phoneNumber: user.phoneNumber,
+      companyName: user.companyName,
+      country: user.country,
+      jobTitle: user.jobTitle,
+      lastupdate: firebase.firestore.Timestamp.fromDate(new Date())
+    };
+    return this.updateRef('users', user.uid, userUpdateData);
+  }
+  updateLogo(collection, doc, logoUrl) {
+    return this.updateRef(collection, doc, { logo: logoUrl });
   }
 }

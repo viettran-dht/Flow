@@ -27,6 +27,7 @@ export interface IUser {
     companyName?: string;
     country?: any;
     logo?: string;
+    jobTitle?: string;
 }
 
 

@@ -12,7 +12,7 @@ import { TIMEZONELIST } from 'src/app/constant/userTimezone';
   styleUrls: ['./add-new-flow.component.scss'],
   // tslint:disable-next-line:no-host-metadata-property
   host: {
-    '(document:click)': 'onClick($event)',
+    // '(document:click)': 'onClick($event)',
   }
 
 })
@@ -21,9 +21,9 @@ export class AddNewFlowComponent implements OnInit {
 
   public addFlowForm: FormGroup;
   public listClient = [
-    { id: 1, name: 'hiep' },
-    { id: 2, name: 'nam' },
-    { id: 3, name: 'dung' }
+    { Id: 1, Name: 'hiep' },
+    { Id: 2, Name: 'nam' },
+    { Id: 3, Name: 'dung' }
   ];
   public showSelectBox: any = {
     client: false,
@@ -60,8 +60,9 @@ export class AddNewFlowComponent implements OnInit {
     });
   }
   onClick(event: any) {
-    if (!this.zoneSelect.nativeElement.contains(event.target)) {
+    // if (!this.zoneSelect.nativeElement.contains(event.target)) {
       // this.showSelectBox = false;
+      // console.log(event);
       if (!event.target.id) {
         for (const key in this.showSelectBox) {
           if (this.showSelectBox.hasOwnProperty(key)) {
@@ -75,7 +76,7 @@ export class AddNewFlowComponent implements OnInit {
           }
         }
       }
-    }
+    // }
   }
   onFocus(id) {
     this.showSelectBox[id] = true;
@@ -91,7 +92,7 @@ export class AddNewFlowComponent implements OnInit {
     this.listClient.push(event);
   }
   onSelect(event, type) {
-    this.addFlowForm.get(type).setValue(event.name);
+    this.addFlowForm.get(type).setValue(event.Name);
   }
   save() {
     this.helperService.markFormGroupTouched(this.addFlowForm);
