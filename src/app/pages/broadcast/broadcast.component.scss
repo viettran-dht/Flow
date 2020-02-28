@@ -1,0 +1,70 @@
+.calendar-block {
+    &__body {
+        flex: 1;
+        padding: 25px 40px;
+        margin-right: 17px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+    }
+}
+
+.add-broadcast {
+    max-width: 123px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+}
+
+.add-icon {
+    height: 20px;
+    margin: 20px 0;
+    position: relative;
+    &:after, &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: #52A1A7;
+        transform: translate(-50%, -50%);
+    }
+    &:after {
+        width: 3px;
+        height: 20px;
+    }
+    &:before {
+        width: 20px;
+        height: 3px;
+    }
+}
+
+.add-btn {
+    padding: 3px 32px;
+    text-align: center;
+    background: #52A1A7;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    &:last-child {
+        background: #48CBD5;
+    }
+}
+
+.card-add {
+    width: 239px;
+    background: #fff;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+    &__left {
+        padding: 15px 10px 20px;
+        flex: 1;
+        border-right: 1px solid #E8E8E8;
+    }
+    &__right {
+        width: 60px;
+        margin: 0;
+    }
+}
