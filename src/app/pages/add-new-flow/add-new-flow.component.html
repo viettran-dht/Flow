@@ -33,8 +33,7 @@
               <div class="block-select flex-align-center flex-between" id="client" (appClickOutside)="onClick($event)" >
                 <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')">
                 <span class="arrow arrow-down"></span>
-                <app-select-custom *ngIf="showSelectBox?.client" (onselect)="onSelect($event,'client')"
-                  (add)="onAdd($event)" [list]="listClient" [data]="addFlowForm.value.client"></app-select-custom>
+                <app-select-custom [list]='listClient'></app-select-custom>
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.client.touched && !addFlowForm.controls.client.valid">This
                 field is required.</p>
@@ -44,8 +43,7 @@
               <div class="block-select flex-align-center flex-between" id="brand" (appClickOutside)="onClick($event)"  >
                 <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')">
                 <span class="arrow arrow-down"></span>
-                <app-select-custom *ngIf="showSelectBox?.brand" (onselect)="onSelect($event,'brand')"
-                  (add)="onAdd($event)" [list]="listClient" [data]="addFlowForm.value.brand"></app-select-custom>
+                <app-select-custom [list]='listClient'></app-select-custom>
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.brand.touched && !addFlowForm.controls.brand.valid">This
                 field is required.</p>
@@ -56,8 +54,7 @@
                 <!-- <p>Campaign Name</p> -->
                 <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')">
                 <span class="arrow arrow-down"></span>
-                <app-select-custom *ngIf="showSelectBox?.campaign" (onselect)="onSelect($event,'campaign')"
-                  (add)="onAdd($event)" [list]="listClient" [data]="addFlowForm.value.campaign"></app-select-custom>
+                <app-select-custom [list]='listClient'></app-select-custom>
                  
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.campaign.touched && !addFlowForm.controls.campaign.valid">This
