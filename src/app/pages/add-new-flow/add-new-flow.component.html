@@ -31,9 +31,9 @@
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">CLIENT</p>
               <div class="block-select flex-align-center flex-between" id="client" (appClickOutside)="onClick($event)" >
-                <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')">
-                <span class="arrow arrow-down"></span>
+                <!-- <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')"> -->
                 <app-select-custom [list]='listClient'></app-select-custom>
+                <span class="arrow arrow-down"></span>
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.client.touched && !addFlowForm.controls.client.valid">This
                 field is required.</p>
@@ -41,9 +41,9 @@
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">BRAND</p>
               <div class="block-select flex-align-center flex-between" id="brand" (appClickOutside)="onClick($event)"  >
-                <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')">
-                <span class="arrow arrow-down"></span>
+                <!-- <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')"> -->
                 <app-select-custom [list]='listClient'></app-select-custom>
+                <span class="arrow arrow-down"></span>
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.brand.touched && !addFlowForm.controls.brand.valid">This
                 field is required.</p>
@@ -52,9 +52,9 @@
               <p class="semi-bold sub-heading mb-10">CAMPAIGN</p>
               <div class="block-select flex-align-center flex-between" id="campaign" (appClickOutside)="onClick($event)"  >
                 <!-- <p>Campaign Name</p> -->
-                <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')">
-                <span class="arrow arrow-down"></span>
+                <!-- <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')"> -->
                 <app-select-custom [list]='listClient'></app-select-custom>
+                <span class="arrow arrow-down"></span>
                  
               </div>
               <p class="error-text" *ngIf="addFlowForm.controls.campaign.touched && !addFlowForm.controls.campaign.valid">This
@@ -98,7 +98,7 @@
           <div class="form-custom__row flex-between mb-40">
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">TAGS</p>
-              <div class="block-select flex-align-center flex-between">
+              <div class="block-select pb-0 flex-align-center flex-between">
                 <!-- <p>Add a Tag</p> -->
                 <app-tag-input (onchange)="onTagsChange($event)"></app-tag-input>
                 <!-- <span class="arrow arrow-down"></span> -->
