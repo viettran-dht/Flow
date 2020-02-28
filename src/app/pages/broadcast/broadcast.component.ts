@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-broadcast',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BroadcastComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private location: Location
+  ) { }
 
   ngOnInit() {
   }
 
+  goto(page) {
+    this.router.navigate([page]);
+  }
+  goback() {
+    this.location.back();
+  }
 }
