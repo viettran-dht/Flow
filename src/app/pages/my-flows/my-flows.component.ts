@@ -54,7 +54,7 @@ export class MyFlowsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.getAppsByCampaignId('pwO4e2rlgy');
+    this.getAppsByCampaignId('7iPfogab6x');
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
   }
@@ -174,5 +174,11 @@ export class MyFlowsComponent implements OnInit {
       this.listApp = [];
       this.loading.loadingApp = false;
     });
+  }
+
+  convertDate(date) {
+    date = new Date(date);
+    const dateISO = date.toISOString();
+    return dateISO;
   }
 }
