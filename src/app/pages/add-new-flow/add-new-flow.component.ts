@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { TIMEZONELIST } from 'src/app/constant/userTimezone';
+import { ISelect } from 'src/app/interfaces/select.interface';
+import { MESSAGE } from 'src/app/constant/message';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-new-flow',
@@ -20,89 +24,307 @@ export class AddNewFlowComponent implements OnInit {
   @ViewChild('zoneSelect', { static: false }) zoneSelect: ElementRef;
 
   public addFlowForm: FormGroup;
-  public listClient = [
-    { Id: 1, Name: 'hiep' },
-    { Id: 2, Name: 'nam' },
-    { Id: 3, Name: 'dung' }
-  ];
-  public showSelectBox: any = {
-    client: false,
-    brand: false,
-    campaign: false
-  };
-  public userTimezone: any = TIMEZONELIST;
 
+  public listClient = [];
+  public listBrand = [];
+  public listCampaign = [];
+  public listStatus = [];
+  public loading: any = {
+    loadingBrand: false,
+    loadingCampaign: false,
+    addClient: false,
+    addBrand: false,
+    addCampaign: false,
+    loadingApp: false
+  };
+  // public listApp = [];
+  public currentUser: any;
+  public userTimezone: any = TIMEZONELIST;
+  public flowId: any;
+  public app: any;
+  public clientId: any;
+  public brandId: any;
+  public campaignId: any;
+  public tagsData = [];
   constructor(
     private helperService: HelperService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private firebaseService: FirebaseService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private location: Location
   ) {
     this.initForm();
+    this.flowId = this.activatedRoute.snapshot.paramMap.get('flowId');
+    if (this.flowId) {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.app = this.router.getCurrentNavigation().extras.state.data;
+        console.log(this.app);
+        this.initData();
+      } else {
+        this.getAppByAppId(this.flowId);
+      }
+    }
+    // this.activatedRoute.queryParams.subscribe((res: any) => {
+
+    // });
+    this.getClients();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.currentUser = await this.authService.getCurrentUser();
   }
 
   initForm() {
     this.addFlowForm = this.fb.group({
       flowName: ['', Validators.required],
-      client: ['', Validators.required],
+      campaignId: ['', Validators.required],
       region: [this.userTimezone[0].value, Validators.required],
       tags: [[], Validators.required],
-      brand: ['', Validators.required],
+      brandId: ['', Validators.required],
       flowStartDate: ['', Validators.required],
       notes: [''],
-      campaign: ['', Validators.required],
+      clientId: ['', Validators.required],
       flowEndDate: ['', Validators.required],
     });
   }
-  onClick(event: any) {
-    // if (!this.zoneSelect.nativeElement.contains(event.target)) {
-      // this.showSelectBox = false;
-      // console.log(event);
-      if (!event.target.id) {
-        for (const key in this.showSelectBox) {
-          if (this.showSelectBox.hasOwnProperty(key)) {
-            this.showSelectBox[key] = false;
-          }
-        }
-      } else {
-        for (const key in this.showSelectBox) {
-          if (this.showSelectBox.hasOwnProperty(key) && key !== event.target.id) {
-            this.showSelectBox[key] = false;
-          }
-        }
-      }
-    // }
-  }
-  onFocus(id) {
-    this.showSelectBox[id] = true;
-    for (const key in this.showSelectBox) {
-      if (this.showSelectBox.hasOwnProperty(key) && key !== id) {
-        this.showSelectBox[key] = false;
-      }
+  select(event, type) {
+    console.log(event);
+    switch (type) {
+      case 'client':
+        // if (this.searchParams.client && this.searchParams.client.Id !== event.Id) {
+        //   this.clearSearchParams('client');
+        //   this.listBrand = [];
+        //   this.listCampaign = [];
+        // }
+        this.addFlowForm.get('clientId').setValue(event.Id);
+        // this.searchParams.client.fullName = event.Name;
+        this.getBrandsByClientId(event.Id);
+        break;
+      case 'brand':
+        this.addFlowForm.get('brandId').setValue(event.Id);
+        this.getCampaignByBrandId(event.Id);
+        break;
+      case 'campaign':
+        this.addFlowForm.get('campaignId').setValue(event.Id);
+        break;
     }
   }
 
-  onAdd(event, type) {
-    // this.addFlowForm.get('client').setValue(event);
-    this.listClient.push(event);
+  goto(page) {
+    this.router.navigate([page]);
   }
-  onSelect(event, type) {
-    this.addFlowForm.get(type).setValue(event.Name);
+  async getClients() {
+    try {
+      const currentUser: any = await this.authService.getCurrentUser();
+      const uId = currentUser.uid;
+      this.firebaseService.getClients(uId).then((res: any) => {
+        this.listClient = res.map(c => {
+          const client: ISelect = {
+            Id: c.Id,
+            Name: c.fullName
+          };
+          return client;
+        });
+      });
+    } catch {
+      this.listClient = [];
+    }
   }
-  save() {
+
+  getBrandsByClientId(clientId) {
+    this.loading.loadingBrand = true;
+    this.firebaseService.getBrandsByClientId(clientId).then((res: any) => {
+      this.listBrand = res.map(c => {
+        const brand: ISelect = {
+          Id: c.Id,
+          Name: c.brandName
+        };
+        return brand;
+      });
+      // console.log(res, this.pageParams.listBrand)
+      this.loading.loadingBrand = false;
+    }).catch(err => {
+      this.loading.loadingBrand = false;
+    });
+  }
+  getCampaignByBrandId(brandId) {
+    this.loading.loadingCampaign = true;
+    this.firebaseService.getCampaignByBrandId(brandId).then((res: any) => {
+      this.listCampaign = res.map(c => {
+        const campaign: ISelect = {
+          Id: c.Id,
+          Name: c.campaignName
+        };
+        return campaign;
+      });
+      this.loading.loadingCampaign = false;
+    }).catch(err => {
+      this.loading.loadingCampaign = false;
+    });
+  }
+  async onAdd(event, type) {
+    switch (type) {
+      case 'client':
+        await this.createClient(event.Name);
+        break;
+      case 'brand':
+        await this.createBrand(event.Name);
+        break;
+      case 'campaign':
+        await this.createCampaign(event.Name);
+        break;
+    }
+    this.select(event, type);
+  }
+  async createClient(clientName) {
+    try {
+      this.loading.addClient = true;
+      const uId = this.currentUser.uid;
+      const clientId = this.helperService.generateRandomUID(5);
+      const clientData: any = {
+        Id: clientId,
+        fullName: clientName,
+        uId
+      };
+      await this.firebaseService.createClient(clientId, clientData);
+      this.helperService.alert('success', MESSAGE.createClientSuccess);
+      this.loading.addClient = false;
+      const newClient = {
+        Id: clientId,
+        Name: clientName
+      };
+      this.listClient.push(newClient);
+    } catch {
+      this.loading.addClient = false;
+    }
+  }
+  async createBrand(brandName) {
+    try {
+      this.loading.addBrand = true;
+      const uId = this.currentUser.uid;
+      const brandId = this.helperService.generateRandomUID(8);
+      const brandData: any = {
+        Id: brandId,
+        brandName,
+        uId,
+        clientId: this.addFlowForm.get('clientId')
+      };
+      await this.firebaseService.createBrand(brandId, brandData);
+      this.helperService.alert('success', MESSAGE.createBrandSuccess);
+      this.loading.addBrand = false;
+      const newBrand = {
+        Id: brandId,
+        Name: brandName
+      };
+      this.listBrand.push(newBrand);
+    } catch {
+      this.loading.addBrand = false;
+    }
+  }
+  async createCampaign(campaignName) {
+    try {
+      this.loading.addCampaign = true;
+      const uId = this.currentUser.uid;
+      const campaignId = this.helperService.generateRandomUID(10);
+      const campaignData: any = {
+        Id: campaignId,
+        campaignName,
+        uId,
+        clientId: this.addFlowForm.get('client'),
+        brandId: this.addFlowForm.get('brand')
+      };
+      await this.firebaseService.createCampaign(campaignId, campaignData);
+      this.helperService.alert('success', MESSAGE.createCampaignSuccess);
+      this.loading.addCampaign = false;
+      const newCampaign = {
+        Id: campaignId,
+        Name: campaignName
+      };
+      this.listCampaign.push(newCampaign);
+    } catch {
+      this.loading.addCampaign = false;
+    }
+  }
+  search() {
+
+  }
+
+  getAppByAppId(appId) {
+    this.loading.loadingApp = true;
+    this.firebaseService.getAppsByAppId(appId).then((res: any) => {
+      this.app = res[0];
+      this.initData();
+      this.loading.loadingApp = false;
+      console.log(this.app);
+    }).catch(err => {
+      this.loading.loadingApp = false;
+    });
+  }
+  async createApp() {
     this.helperService.markFormGroupTouched(this.addFlowForm);
     console.log(this.addFlowForm.value);
     if (this.addFlowForm.invalid) {
       return;
     }
+    try {
+      this.loading.loadingApp = true;
+      const idToken = await this.currentUser.getIdToken();
+      const res: any = await this.apiService.createApp(this.addFlowForm.value, idToken);
+      console.log(res);
+      // const req = this.addFlowForm.value;
+      // req.appId = res.appId;
+      await this.firebaseService.createApp(res.appId, this.addFlowForm.value);
+      this.loading.loadingApp = false;
+      this.helperService.alert('success', MESSAGE.createAppSuccess);
+    } catch (e) {
+      this.loading.loadingApp = false;
+      console.log(e);
+    }
+
   }
   onTagsChange(event) {
-    console.log(event)
+    console.log(event);
     this.addFlowForm.get('tags').setValue(event);
+  }
+  goback() {
+    this.location.back();
+  }
+  async initData() {
+    this.addFlowForm.patchValue({
+      flowName: this.app.flowName,
+      campaignId: this.app.campaignId,
+      region: this.app.region,
+      tags: this.app.tags,
+      brandId: this.app.brandId,
+      flowStartDate: new Date(this.app.flowStartDate),
+      notes: this.app.notes,
+      clientId: this.app.clientId,
+      flowEndDate: new Date(this.app.flowEndDate),
+    });
+    this.clientId = this.app.clientId;
+    this.campaignId = this.app.campaignId;
+    this.brandId = this.app.brandId;
+    this.tagsData = this.app.tags;
+    await this.getBrandsByClientId(this.clientId);
+    await this.getCampaignByBrandId(this.brandId);
+  }
+  async updateApp() {
+    this.helperService.markFormGroupTouched(this.addFlowForm);
+    console.log(this.addFlowForm.value);
+    if (this.addFlowForm.invalid) {
+      return;
+    }
+    try {
+      this.loading.loadingApp = true;
+      await this.firebaseService.updateRef('apps', this.flowId, this.addFlowForm.value);
+      this.loading.loadingApp = false;
+      this.helperService.alert('success', MESSAGE.updateAppSuccess);
+    } catch (e) {
+      this.loading.loadingApp = false;
+      console.log(e);
+    }
   }
 }

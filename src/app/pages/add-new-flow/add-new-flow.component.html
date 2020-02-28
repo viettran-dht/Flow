@@ -1,5 +1,5 @@
 <div class="page-account page-custom">
-  <form [formGroup]="addFlowForm" (submit)="save()">
+  <form [formGroup]="addFlowForm">
     <div class="page-cta">
       <div class="container-custom page-cta__container">
         <a class="sub-heading page-cta__text" href="#">My Flows<span class="mlr-5">/</span></a>
@@ -9,7 +9,7 @@
     <div class="page-title mb-35">
       <div class="container-custom page-title__container">
         <div class="flex-align-center">
-          <span class="arrow arrow-left"></span>
+          <span class="arrow arrow-left" (click)="goback()"></span>
           <h3 class="title ml-10">Add descriptions to your Flow</h3>
         </div>
       </div>
@@ -21,43 +21,51 @@
             <div class="form-custom__col">
               <div class="block-input title-bold">
                 <input placeholder="Flow Name" formControlName="flowName" />
-              
+
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.flowName.touched && !addFlowForm.controls.flowName.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm.controls.flowName.touched && !addFlowForm.controls.flowName.valid">This
                 field is required.</p>
             </div>
           </div>
           <div class="form-custom__row flex-between mb-40">
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">CLIENT</p>
-              <div class="block-select flex-align-center flex-between" id="client" (appClickOutside)="onClick($event)" >
+              <div class="block-select flex-align-center flex-between" id="client">
                 <!-- <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')"> -->
-                <app-select-custom [list]='listClient'></app-select-custom>
+                <app-select-custom [type]="'client'" [list]="listClient" (onselect)="select($event,'client')"
+                  (add)="onAdd($event,'client')" [dataId]="clientId"></app-select-custom>
                 <span class="arrow arrow-down"></span>
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.client.touched && !addFlowForm.controls.client.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm?.controls?.client?.touched && !addFlowForm?.controls?.client.valid">This
                 field is required.</p>
             </div>
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">BRAND</p>
-              <div class="block-select flex-align-center flex-between" id="brand" (appClickOutside)="onClick($event)"  >
+              <div class="block-select flex-align-center flex-between" id="brand">
                 <!-- <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')"> -->
-                <app-select-custom [list]='listClient'></app-select-custom>
+                <app-select-custom [type]="'brand'"  (add)="onAdd($event,'brand')" [list]="listBrand"
+                  (onselect)="select($event,'brand')" [dataId]="brandId">
+                </app-select-custom>
                 <span class="arrow arrow-down"></span>
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.brand.touched && !addFlowForm.controls.brand.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm?.controls?.brand?.touched && !addFlowForm?.controls?.brand.valid">This
                 field is required.</p>
             </div>
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">CAMPAIGN</p>
-              <div class="block-select flex-align-center flex-between" id="campaign" (appClickOutside)="onClick($event)"  >
+              <div class="block-select flex-align-center flex-between" id="campaign">
                 <!-- <p>Campaign Name</p> -->
                 <!-- <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')"> -->
-                <app-select-custom [list]='listClient'></app-select-custom>
+                <app-select-custom [type]="'campaign'" [list]="listCampaign" (onselect)="select($event,'campaign')"
+                  (add)="onAdd($event,'campaign')" [dataId]="campaignId"></app-select-custom>
                 <span class="arrow arrow-down"></span>
-                 
+
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.campaign.touched && !addFlowForm.controls.campaign.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm?.controls?.campaign?.touched && !addFlowForm?.controls?.campaign.valid">This
                 field is required.</p>
             </div>
           </div>
@@ -76,22 +84,24 @@
               <p class="semi-bold sub-heading mb-10">FLOW START DATE</p>
               <div class="block-select flex-align-center flex-between">
                 <!-- <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p> -->
-                <ngx-datetime-picker formControlName="flowStartDate" ></ngx-datetime-picker>
+                <ngx-datetime-picker formControlName="flowStartDate" [(selectedDateTime)]="addFlowForm.value.flowStartDate"></ngx-datetime-picker>
                 <span class="arrow arrow-down"></span>
-              
+
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.flowStartDate.touched && !addFlowForm.controls.flowStartDate.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm.controls.flowStartDate.touched && !addFlowForm.controls.flowStartDate.valid">This
                 field is required.</p>
             </div>
             <div class="form-custom__col">
               <p class="semi-bold sub-heading mb-10">FLOW END DATE</p>
               <div class="block-select flex-align-center flex-between">
                 <!-- <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p> -->
-                <ngx-datetime-picker formControlName="flowEndDate" ></ngx-datetime-picker>
+                <ngx-datetime-picker formControlName="flowEndDate"></ngx-datetime-picker>
                 <span class="arrow arrow-down"></span>
-               
+
               </div>
-              <p class="error-text" *ngIf="addFlowForm.controls.flowEndDate.touched && !addFlowForm.controls.flowEndDate.valid">This
+              <p class="error-text"
+                *ngIf="addFlowForm.controls.flowEndDate.touched && !addFlowForm.controls.flowEndDate.valid">This
                 field is required.</p>
             </div>
           </div>
@@ -100,7 +110,7 @@
               <p class="semi-bold sub-heading mb-10">TAGS</p>
               <div class="block-select pb-0 flex-align-center flex-between">
                 <!-- <p>Add a Tag</p> -->
-                <app-tag-input (onchange)="onTagsChange($event)"></app-tag-input>
+                <app-tag-input (onchange)="onTagsChange($event)" [data]="tagsData"></app-tag-input>
                 <!-- <span class="arrow arrow-down"></span> -->
               </div>
             </div>
@@ -116,7 +126,14 @@
                 <button class="btn-transparent black-text sub-heading" type="reset">
                   cancel
                 </button>
-                <button class="btn-primary" type="submit">SAVE</button>
+                <button class="btn-primary" (click)="createApp()" *ngIf="!flowId" [disabled]='loading?.loadingApp'>
+                  <app-loading-inside-btn *ngIf="loading?.loadingApp"></app-loading-inside-btn>
+                  {{loading?.loadingApp?'':'NEXT'}}
+                </button>
+                <button class="btn-primary" (click)="updateApp()" *ngIf="flowId" [disabled]='loading?.loadingApp'>
+                  <app-loading-inside-btn *ngIf="loading?.loadingApp"></app-loading-inside-btn>
+                  {{loading?.loadingApp?'':'NEXT'}}
+                </button>
               </div>
             </div>
           </div>

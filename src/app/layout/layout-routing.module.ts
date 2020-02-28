@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/add-new-flow/add-new-flow.module').then(m => m.AddNewFlowModule)
       },
       {
+        path: 'edit-flow/:flowId',
+        loadChildren: () => import('../pages/add-new-flow/add-new-flow.module').then(m => m.AddNewFlowModule)
+      },
+      {
         path: 'billing',
         loadChildren: () => import('../pages/billing/billing.module').then(m => m.BillingModule)
       },

@@ -1,8 +1,8 @@
-<div class="flex-center select-custom" [class.active]="showSelectBox" (appClickOutside)="clickOutside()">
-    <input placeholder="{{type}}" (focus)="showSelectBox = true" [(ngModel)]="newData.Name"/>
+<div class="flex-center select-custom" [class.active]="showSelectBox" (click)="showSelectBox = true" (appClickOutside)="clickOutside()">
+    <input placeholder="{{type}}" (focus)="showSelectBox = true" [(ngModel)]="newData.Name" [disabled]="!disabledInput"/>
     <span class="arrow arrow-down"></span>
     <ul>
-        <li *ngFor="let item of list" (click)="onSelect(item)">{{item.Name}}</li>
-        <li *ngIf="showAddButton"><i class="fa fa-plus" (click)="onAdd()">{{newData?.Name}}</i></li>
+        <li *ngFor="let item of list" (click)="$event.stopPropagation(); onSelect(item)">{{item.Name}}</li>
+        <li *ngIf="showAddButton"><i class="fa fa-plus" (click)=" $event.stopPropagation();onAdd()">{{newData?.Name}}</i></li>
     </ul>
 </div>

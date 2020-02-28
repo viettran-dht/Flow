@@ -7,6 +7,8 @@ export const MESSAGE = {
     createClientSuccess: 'Greate! Create client successfully',
     createBrandSuccess: 'Greate! Create brand successfully',
     createCampaignSuccess: 'Greate! Create campaign successfully',
+    createAppSuccess: 'Greate! Create app successfully',
+    updateAppSuccess: 'Greate! Update app successfully',
     updateUserSuccess: 'Update infomation successfully',
     sendSuccess: 'Successfully',
     paymentSuccess: 'Thanks! purchase success',

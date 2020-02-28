@@ -14,6 +14,9 @@ export class SelectCustomComponent implements OnInit, OnChanges {
   @Input() list: ISelect[] = [];
   @Input() type = '';
   @Input() showAddButton = true;
+  @Input() disabledInput = false;
+  @Input() showSelectBox = false;
+  @Input() dataId: any;
   @Output() onselect = new EventEmitter<any>();
   @Output() add = new EventEmitter<any>();
 
@@ -21,7 +24,6 @@ export class SelectCustomComponent implements OnInit, OnChanges {
     Id: '',
     Name: ''
   };
-  public showSelectBox = false;
   public loading = false;
   public newData: ISelect = {
     Id: '',
@@ -40,6 +42,14 @@ export class SelectCustomComponent implements OnInit, OnChanges {
       Id: '',
       Name: ''
     };
+    if (this.dataId) {
+      this.selectedData = this.list.find(x => x.Id === this.dataId);
+      if (this.selectedData) {
+        this.newData.Name = this.selectedData.Name;
+        this.newData.Id = this.selectedData.Id;
+      }
+
+    }
   }
   onSelect(data: any) {
     this.selectedData = data;
@@ -56,6 +66,11 @@ export class SelectCustomComponent implements OnInit, OnChanges {
   clickOutside(event) {
     // console.log(111111111)
     this.showSelectBox = false;
+  }
+
+  showSelect() {
+    this.showSelectBox = true;
+    console.log(this.showSelectBox)
   }
 
 }

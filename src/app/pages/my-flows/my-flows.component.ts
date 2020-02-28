@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MY_FLOW_LAYOUT } from 'src/app/constant/constants';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { ISelect } from 'src/app/interfaces/select.interface';
@@ -45,6 +45,7 @@ export class MyFlowsComponent implements OnInit {
   };
   public listApp = [];
   public currentUser: any;
+  public showSelectClient = false;
   constructor(
     public router: Router,
     public authService: AuthService,
@@ -83,8 +84,19 @@ export class MyFlowsComponent implements OnInit {
     }
   }
 
-  goto(page) {
-    this.router.navigate([page]);
+  goto(page: string, params?: any) {
+    if (params) {
+      const data: NavigationExtras = {
+        state: {
+          data: params
+        }
+      };
+      this.router.navigate([page], data);
+
+    } else {
+      this.router.navigate([page]);
+
+    }
   }
   async getClients() {
     try {
@@ -135,89 +147,7 @@ export class MyFlowsComponent implements OnInit {
       this.loading.loadingCampaign = false;
     });
   }
-  async onAdd(event, type) {
-    switch (type) {
-      case 'client':
-        await this.createClient(event.Name);
-        break;
-      case 'brand':
-        await this.createBrand(event.Name);
-        break;
-      case 'campaign':
-        await this.createCampaign(event.Name);
-        break;
-    }
-    this.select(event, type);
-  }
-  async createClient(clientName) {
-    try {
-      this.loading.addClient = true;
-      const uId = this.currentUser.uid;
-      const clientId = this.helperService.generateRandomUID(5);
-      const clientData: any = {
-        Id: clientId,
-        fullName: clientName,
-        uId
-      };
-      await this.firebaseService.createClient(clientId, clientData);
-      this.helperService.alert('success', MESSAGE.createClientSuccess);
-      this.loading.addClient = false;
-      const newClient = {
-        Id: clientId,
-        Name: clientName
-      };
-      this.listClient.push(newClient);
-    } catch {
-      this.loading.addClient = false;
-    }
-  }
-  async createBrand(brandName) {
-    try {
-      this.loading.addBrand = true;
-      const uId = this.currentUser.uid;
-      const brandId = this.helperService.generateRandomUID(8);
-      const brandData: any = {
-        Id: brandId,
-        brandName,
-        uId,
-        clientId: this.searchParams.client.Id
-      };
-      await this.firebaseService.createBrand(brandId, brandData);
-      this.helperService.alert('success', MESSAGE.createBrandSuccess);
-      this.loading.addBrand = false;
-      const newBrand = {
-        Id: brandId,
-        Name: brandName
-      };
-      this.listBrand.push(newBrand);
-    } catch {
-      this.loading.addBrand = false;
-    }
-  }
-  async createCampaign(campaignName) {
-    try {
-      this.loading.addCampaign = true;
-      const uId = this.currentUser.uid;
-      const campaignId = this.helperService.generateRandomUID(10);
-      const campaignData: any = {
-        Id: campaignId,
-        campaignName,
-        uId,
-        clientId: this.searchParams.client.Id,
-        brandId: this.searchParams.brand.Id
-      };
-      await this.firebaseService.createCampaign(campaignId, campaignData);
-      this.helperService.alert('success', MESSAGE.createCampaignSuccess);
-      this.loading.addCampaign = false;
-      const newCampaign = {
-        Id: campaignId,
-        Name: campaignName
-      };
-      this.listCampaign.push(newCampaign);
-    } catch {
-      this.loading.addCampaign = false;
-    }
-  }
+
   search() {
     console.log(this.searchParams);
   }

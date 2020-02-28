@@ -9,7 +9,7 @@ export class FirebaseService {
 
   constructor() { }
 
-createClient(clientId, clientData) {
+  createClient(clientId, clientData) {
     return firebase.database().ref('clients/' + clientId).set(clientData);
   }
   createBrand(brandId, brandData) {
@@ -22,6 +22,10 @@ createClient(clientId, clientData) {
   createUser(uid, userData) {
     userData.created = firebase.firestore.Timestamp.fromDate(new Date());
     return firebase.database().ref('users/' + uid).set(userData);
+  }
+  createApp(appId, appData) {
+    appData.created = firebase.firestore.Timestamp.fromDate(new Date());
+    return firebase.database().ref('apps/' + appId).set(appData);
   }
   updateRef(ref, id, body) {
     // console.log(ref, id, body)
@@ -89,6 +93,14 @@ createClient(clientId, clientData) {
   getAppsByCampaignId(campaignId) {
     return new Promise((resolve, reject) => {
       firebase.database().ref('apps/').orderByChild('campaignId').equalTo(campaignId).on('value', (snapshot) => {
+        const apps = valuesLd(snapshot.val());
+        resolve(apps);
+      });
+    });
+  }
+  getAppsByAppId(appId) {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('apps/').orderByChild('appId').equalTo(appId).on('value', (snapshot) => {
         const apps = valuesLd(snapshot.val());
         resolve(apps);
       });

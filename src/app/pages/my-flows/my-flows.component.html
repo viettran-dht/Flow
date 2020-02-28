@@ -56,13 +56,12 @@
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'client'" [list]="listClient" (onselect)="select($event,'client')"
-                  (add)="onAdd($event,'client')" ></app-select-custom>
+                <app-select-custom [type]="'client'" [list]="listClient" (onselect)="select($event,'client')"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'brand'" (add)="onAdd($event,'brand')" [list]="listBrand"
+                <app-select-custom [type]="'brand'" [list]="listBrand"
                   (onselect)="select($event,'brand')">
                 </app-select-custom>
 
@@ -71,7 +70,7 @@
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
                 <app-select-custom [type]="'campaign'" [list]="listCampaign"
-                  (onselect)="select($event,'campaign')" (add)="onAdd($event,'campaign')"></app-select-custom>
+                  (onselect)="select($event,'campaign')"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
@@ -98,234 +97,18 @@
       <div class="layout grid-layout" *ngIf="layout === 'grid'">
         <div class="layout__container">
           <div class="layout__list">
-            <div class="layout__item active">
+            <div class="layout__item active" *ngFor="let app of listApp">
               <div class="layout__header header-active">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
               <div class="layout__body">
                 <img class="mb-5" src="../../../assets/img/default-card.png" />
                 <div class="layout__content flex-center">
-                  <p class="sub-heading semi-bold">Flow Name</p>
+                  <p class="sub-heading semi-bold">{{app?.appName}}</p>
                   <div class="layout__detail">
                     <div class="p-meidum">Client Name / Brand Name / Campaign</div>
                     <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
                     <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header header-active">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header header-active">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header header-active">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
                   </div>
                   <div class="flex-wrap flex-between btn-action">
                     <button class="mb-5 two-up main-style">EDIT</button>
@@ -342,7 +125,7 @@
       <div class="layout list-layout" *ngIf="layout === 'list'">
         <div class="layout__container">
           <div class="layout__list">
-            <div class="layout__item">
+            <div class="layout__item" *ngFor="let app of listApp">
               <div class="layout__header header-active">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
@@ -350,7 +133,7 @@
                 <img class="mb-5" src="../../../assets/img/default-card.png" />
                 <div class="layout__content flex-center">
                   <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
+                    <p class="sub-heading semi-bold">{{app?.appName}}</p>
                     <div class="layout__detail">
                       <div class="p-meidum">Client Name / Brand Name / Campaign</div>
                       <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
@@ -358,55 +141,7 @@
                     </div>
                   </div>
                   <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header header-active">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout__item">
-              <div class="layout__header">
-                <h1 class="semi-bold sub-heading">INACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">Flow Name</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: YYYY-MM-DD 23:59HRS</div>
-                      <div class="p-meidum">Ends on: YYYY-MM-DD 23:59HRS </div>
-                    </div>
-                  </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
+                    <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
                     <button class="mb-5 two-up main-style">CLONE</button>
                     <button class="mb-5 full-width secondary-style">SHARE </button>
                     <button class="full-width main-style">PREVIEW</button>
