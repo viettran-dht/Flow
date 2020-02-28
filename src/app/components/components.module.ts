@@ -6,6 +6,7 @@ import { SelectCustomComponent } from './select-custom/select-custom.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { TagInputModule } from 'ngx-chips';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     TagInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DirectivesModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
