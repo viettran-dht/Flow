@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ISelect } from 'src/app/interfaces/select.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { HelperService } from 'src/app/services/helper/helper.service';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { MESSAGE } from 'src/app/constant/message';
 
 @Component({
   selector: 'app-select-custom',
@@ -8,26 +12,50 @@ import { ISelect } from 'src/app/interfaces/select.interface';
 })
 export class SelectCustomComponent implements OnInit, OnChanges {
   @Input() list: ISelect[] = [];
-  @Input() data: any;
+  @Input() type = '';
   @Input() showAddButton = true;
   @Output() onselect = new EventEmitter<any>();
   @Output() add = new EventEmitter<any>();
 
-  constructor() { }
+  public selectedData: ISelect = {
+    Id: '',
+    Name: ''
+  };
+  public showSelectBox = false;
+  public loading = false;
+  public newData: ISelect = {
+    Id: '',
+    Name: ''
+  };
+  constructor(
+    private authService: AuthService,
+    private helperService: HelperService,
+    private firebaseService: FirebaseService
+  ) { }
 
   ngOnInit() {
   }
   ngOnChanges() {
-    // this.list = this.list.filter(x => x.Name.includes(this.data));
+    this.newData = {
+      Id: '',
+      Name: ''
+    };
   }
   onSelect(data: any) {
-    this.onselect.emit(data);
+    this.selectedData = data;
+    this.newData = Object.assign({}, this.selectedData);
+    this.onselect.emit(this.selectedData);
+    this.showSelectBox = false;
   }
-  onAdd() {
-    const data = {
-      id: '123',
-      name: this.data
-    };
-    this.add.emit(data);
+  async onAdd() {
+    if (this.newData.Name === '') {
+      return;
+    }
+    this.add.emit(this.newData);
   }
+  clickOutside(event) {
+    // console.log(111111111)
+    this.showSelectBox = false;
+  }
+
 }

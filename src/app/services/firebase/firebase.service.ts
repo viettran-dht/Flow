@@ -16,6 +16,7 @@ createClient(clientId, clientData) {
     return firebase.database().ref('brands/' + brandId).set(brandData);
   }
   createCampaign(campaignId, campaignData) {
+    campaignData.created = firebase.firestore.Timestamp.fromDate(new Date());
     return firebase.database().ref('campaigns/' + campaignId).set(campaignData);
   }
   createUser(uid, userData) {
