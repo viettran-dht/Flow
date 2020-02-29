@@ -14,7 +14,7 @@ export class SelectCustomComponent implements OnInit, OnChanges {
   @Input() list: ISelect[] = [];
   @Input() type = '';
   @Input() showAddButton = true;
-  @Input() disabledInput = false;
+  @Input() disabledInput = true;
   @Input() showSelectBox = false;
   @Input() dataId: any;
   @Output() onselect = new EventEmitter<any>();

@@ -272,13 +272,15 @@ export class AddNewFlowComponent implements OnInit {
     try {
       this.loading.loadingApp = true;
       const idToken = await this.currentUser.getIdToken();
-      const res: any = await this.apiService.createApp(this.addFlowForm.value, idToken);
-      console.log(res);
+      // const res: any = await this.apiService.createApp(this.addFlowForm.value, idToken);
+      // console.log(res);
       // const req = this.addFlowForm.value;
       // req.appId = res.appId;
-      await this.firebaseService.createApp(res.appId, this.addFlowForm.value);
+      const appId = '-' + this.helperService.generateRandomUID(19);
+      await this.firebaseService.createApp(appId, this.addFlowForm.value);
       this.loading.loadingApp = false;
       this.helperService.alert('success', MESSAGE.createAppSuccess);
+      this.goto('terms-of-use');
     } catch (e) {
       this.loading.loadingApp = false;
       console.log(e);

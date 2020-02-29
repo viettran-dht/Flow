@@ -68,6 +68,10 @@ const routes: Routes = [
         path: 'sms-history',
         loadChildren: () => import('../pages/sms-history/sms-history.module').then(m => m.SmsHistoryModule)
       },
+      {
+        path: 'terms-of-use',
+        loadChildren: () => import('../pages/terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
+      },
       { path: '', redirectTo: 'example', pathMatch: 'full' }
     ]
   }

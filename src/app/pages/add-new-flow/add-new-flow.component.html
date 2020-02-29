@@ -33,7 +33,7 @@
               <p class="semi-bold sub-heading mb-10">CLIENT</p>
               <div class="block-select flex-align-center flex-between" id="client">
                 <!-- <input placeholder="Brand Name" formControlName="client" (focus)="onFocus('client')"> -->
-                <app-select-custom [type]="'client'" [list]="listClient" (onselect)="select($event,'client')"
+                <app-select-custom [type]="'client'" [disabledInput]="false" [list]="listClient" (onselect)="select($event,'client')"
                   (add)="onAdd($event,'client')" [dataId]="clientId"></app-select-custom>
                 <span class="arrow arrow-down"></span>
               </div>
@@ -45,7 +45,7 @@
               <p class="semi-bold sub-heading mb-10">BRAND</p>
               <div class="block-select flex-align-center flex-between" id="brand">
                 <!-- <input placeholder="Brand Name" formControlName="brand" (focus)="onFocus('brand')"> -->
-                <app-select-custom [type]="'brand'"  (add)="onAdd($event,'brand')" [list]="listBrand"
+                <app-select-custom [type]="'brand'" [disabledInput]="false"  (add)="onAdd($event,'brand')" [list]="listBrand"
                   (onselect)="select($event,'brand')" [dataId]="brandId">
                 </app-select-custom>
                 <span class="arrow arrow-down"></span>
@@ -59,7 +59,7 @@
               <div class="block-select flex-align-center flex-between" id="campaign">
                 <!-- <p>Campaign Name</p> -->
                 <!-- <input placeholder="Campaign Name" formControlName="campaign" (focus)="onFocus('campaign')"> -->
-                <app-select-custom [type]="'campaign'" [list]="listCampaign" (onselect)="select($event,'campaign')"
+                <app-select-custom [type]="'campaign'" [disabledInput]="false" [list]="listCampaign" (onselect)="select($event,'campaign')"
                   (add)="onAdd($event,'campaign')" [dataId]="campaignId"></app-select-custom>
                 <span class="arrow arrow-down"></span>
 
