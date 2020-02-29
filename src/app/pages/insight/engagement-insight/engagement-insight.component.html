@@ -10,8 +10,12 @@
                 </span>
             </div>
             <div class="chart__body">
-                <img style="width: 100%; height: 100%; object-fit: contain;"
-                    src="https://www.amcharts.com/wp-content/uploads/2013/11/demo_129_none.png" />
+                <!-- <img style="width: 100%; height: 100%; object-fit: contain;"
+                    src="https://www.amcharts.com/wp-content/uploads/2013/11/demo_129_none.png" /> -->
+                    <canvas  baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType" [options]="doughnutChartOptions" [plugins]="pieChartPlugins"
+                        [legend]="doughnutChartLegend" [colors]="donutColors">
+                    </canvas>
             </div>
             <div class="flex-between flex-align-end chart__footer">
                 <button class="sub-heading btn-primary">VIEW USERS</button>
@@ -28,6 +32,10 @@
                 </span>
             </div>
             <div class="chart__body">
+                <!-- <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType" [options]="doughnutChartOptions" [plugins]="pieChartPlugins"
+                [legend]="doughnutChartLegend" [colors]="donutColors">
+            </canvas> -->
                 <img style="width: 100%; height: 100%; object-fit: contain;"
                     src="https://www.amcharts.com/wp-content/uploads/2013/11/demo_129_none.png" />
             </div>

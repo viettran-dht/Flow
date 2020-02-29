@@ -26,4 +26,16 @@ export class ApiService {
       });
     });
   }
+  getTrackingData(body) {
+    const url = `${environment.apiBase}getTrackingData`;
+    return this.httpClient.post(url, body);
+  }
+  getApps() {
+    const url = `${environment.apiBase}apps`;
+    return this.httpClient.get(url);
+  }
+  getTrackingApp(body) {
+    const url = `${environment.apiBase}getTrackingApp`;
+    return this.httpClient.post(url, body);
+  }
 }
