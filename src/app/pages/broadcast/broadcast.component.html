@@ -14,7 +14,14 @@
   </div>
   <div class="calendar-block">
     <div class="container-custom flex-wrap calendar-block__container">
-      <section class="calendar-block__body"></section>
+      <section class="calendar-block__body">
+        <full-calendar #calendar defaultView="dayGridMonth" [header]="{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        }" [editable]="true" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
+        (dateClick)="handleDateClick($event)" (eventClick)="handleEventClick($event)"></full-calendar>
+      </section>
       <aside class="calendar-block__aside">
         <div class="flex-between flex-column">
           <div class="add-broadcast mb-40">
