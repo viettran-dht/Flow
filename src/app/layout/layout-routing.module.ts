@@ -13,10 +13,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/feature/feature.module').then(m => m.FeatureModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('../pages/home/home.module').then(m => m.HomeModule)
-      },
-      {
         path: 'add-new-flow',
         loadChildren: () => import('../pages/add-new-flow/add-new-flow.module').then(m => m.AddNewFlowModule)
       },
@@ -72,7 +68,7 @@ const routes: Routes = [
         path: 'terms-of-use',
         loadChildren: () => import('../pages/terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
       },
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+      { path: '', redirectTo: 'my-flows', pathMatch: 'full' }
     ]
   }
 ];
