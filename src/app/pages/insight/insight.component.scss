@@ -38,3 +38,27 @@
     }
 }
 
+.tab-name {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    &.active, &:hover {
+        color: #52a1a7 !important;
+        &:after {
+            width: 100%;
+            background: #52a1a7;
+        }
+    }
+    &:after {
+        content: ' ';
+        width: 0%;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: transparent;
+        transition: all 0.3s ease-in-out;
+    }
+
+}
+

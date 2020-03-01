@@ -177,6 +177,11 @@ select {
   font-weight: 500;
 }
 
+.tab-wrapper {
+  padding: 15px 0;
+  background: #fff;
+}
+
 .btn-primary {
   min-width: 114px;
   padding: 6px 10px;
@@ -357,6 +362,10 @@ select {
   padding-bottom: 40px;
 }
 
+.pb-20 {
+  padding-bottom: 20px;
+}
+
 .pb-10 {
   padding-bottom: 10px;
 }
@@ -485,6 +494,10 @@ button {
       font-family: "Barlow", sans-serif;
     }
   }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #bcbcbc;
 }
 
 .block-select {
@@ -1095,6 +1108,10 @@ ngx-datetime-picker {
     left: 50%;
     transform: translateX(-50%);
   }
+}
+
+.uppercase-text {
+  text-transform: uppercase;
 }
 
 .layout-case {
