@@ -1096,3 +1096,8 @@ ngx-datetime-picker {
     transform: translateX(-50%);
   }
 }
+
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
