@@ -1,0 +1,56 @@
+.add-broad {
+    margin-bottom: 40px;
+    @media screen and (min-width: 768px) {
+        margin-bottom: 60px;
+    }
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 100px;
+    }
+    .page-title__container {
+        max-width: 315px;
+    }
+}
+
+.user-group__row {
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+.user-group__btn {
+    width: calc(100%/3 - 8px);
+    height: 27px;
+    margin: 0 4px 8px;
+    background: #E8E8E8;
+    border-radius: 4px;
+    border: none;
+}
+
+.user-group__two-btn {
+    button {
+        width: 150px;
+        height: 27px;
+        margin: 0;
+        border: 0;
+        &.grey-btn {
+            background: #BCBCBC;
+            color: #fff;
+            border-radius: 4px;
+        }
+    }
+}
+
+.page-content__container {
+    height: 100%;
+    margin: 0;
+}
+
+.page-content__editor {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1);
+}

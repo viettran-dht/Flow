@@ -1,1 +1,82 @@
-<p>automated-response works!</p>
+<div class="page-flow page-custom">
+    <div class="page-cta">
+      <div class="container-custom page-cta__container">
+        <a class="sub-heading page-cta__text" href="#">My Broadcasts<span class="mlr-5">/ </span></a>
+        <a class="sub-heading page-cta__text active-cta">Add new automated response broadcast</a>
+      </div>
+    </div>
+  
+    <div class="flex add-broad">
+      <div class="page-title mb-15">
+          <div class="container-custom page-title__container">
+              <div class="flex flow-title mb-35">
+                <div class="page-icon"><span class="arrow arrow-left"></span></div>
+                  <h3 class="title">Add an automated response</h3>
+              </div>
+              <form class="page-content__form">
+                <h1 class="sub-heading mb-10">AUTOMATED RESPONSE NAME</h1>
+                <div class="block-input mb-35">
+                  <input class="light-text-placeholder" placeholder="Broadcast Name" />
+                </div>
+                <div class="invisible">
+                    <h1 class="sub-heading mb-10">BROADCAST DATE</h1>
+                    <div class="block-select flex-align-center flex-between mb-35">
+                    <p class="light-grey-text"><span>YYYY-MM-DD </span> <span>23:59HRS</span></p>
+                    <!-- <ngx-datetime-picker formControlName="flowStartDate" [(selectedDateTime)]="addFlowForm.value.flowStartDate"></ngx-datetime-picker> -->
+                    <span class="arrow arrow-down"></span>
+                    </div>
+                </div>
+                <h1 class="sub-heading mb-10">USER GROUP</h1>
+                <div class="flex-center filter-block__input mb-20">
+                  <input class="regular-font" placeholder="Search User Group">
+                  <i class="fa fa-search"></i>
+                </div>
+                <div class="user-group">
+                  <div class="flex-wrap user-group__row">
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                    <button class="sub-heading user-group__btn">USER GROUP</button>
+                  </div>
+                  <p class="full-width flex-center sub-heading mb-10">OR</p>
+                  <div class="flex-between user-group__two-btn">
+                    <button class="btn-primary">CREATE USER GROUP</button>
+                    <button class="grey-btn">IMPORT CONTACTS</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+      </div>
+      <div class="page-content pr-0">
+        <div class="container-custom flex-column page-content__container">
+          <h1 class="sub-heading mb-15">BROADCAST TYPE</h1>
+          <div class="flex-align-center mb-25">
+            <label class="checkbox-custom small-checkbox mr-35">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark bg-white"></span>
+              <span class="ml-5 sub-title">Email</span>
+            </label>
+            <label class="checkbox-custom small-checkbox mr-35">
+              <input type="checkbox">
+              <span class="checkmark bg-white"></span>
+              <span class="ml-5 sub-title">SMS</span>
+            </label>
+            <div class="flex-between user-group__two-btn">
+              <button class="grey-btn">IMPORT CONTACTS</button>
+            </div>
+          </div>
+          <div class="page-content__editor">
+  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-custom">
+      <div class="flex-align-center flex-end btn-footer pdb-40">
+        <button class="btn-transparent black-text sub-heading">cancel</button>
+        <button class="btn-primary">SAVE BROADCAST</button>
+      </div>
+    </div>
+  </div>
