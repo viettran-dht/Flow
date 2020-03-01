@@ -98,7 +98,7 @@
         <div class="layout__container">
           <div class="layout__list">
             <div class="layout__item active" *ngFor="let app of listApp">
-              <div class="layout__header header-active">
+              <div class="layout__header" [ngClass]="{'header-active': app?.isActived}">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
               <div class="layout__body">
@@ -126,7 +126,7 @@
         <div class="layout__container">
           <div class="layout__list">
             <div class="layout__item" *ngFor="let app of listApp">
-              <div class="layout__header header-active">
+              <div class="layout__header" [ngClass]="{'header-active': app?.isActived}">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
               <div class="layout__body">
