@@ -272,6 +272,10 @@ select {
   color: #767880;
 }
 
+.regular-font {
+  font-size: 16px !important;
+}
+
 .sub-small-button-new {
   min-width: 74px;
   height: 16px;
@@ -306,6 +310,10 @@ select {
 
 .mr-20 {
   margin-right: 20px;
+}
+
+.mr-35 {
+  margin-right: 35px;
 }
 
 .mb-5 {
@@ -364,6 +372,10 @@ select {
 
 .pr-5 {
   padding-right: 5px;
+}
+
+.pr-0 {
+  padding-right: 0 !important;
 }
 
 .pl-5 {
@@ -446,6 +458,10 @@ button {
 
 .black-text {
   color: #535353 !important;
+}
+
+.bg-white {
+  background: #fff !important;
 }
 
 .absolute-center {
@@ -1012,5 +1028,71 @@ ngx-datetime-picker {
     button {
       display: none;
     }
+  }
+}
+
+.light-text-placeholder {
+  &::placeholder {
+    color: #bcbcbc !important;
+  }
+}
+
+
+
+.filter-block {
+  &__container {
+    padding: 0 5px;
+  }
+  &__row {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  &__col {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    &.col-3 {
+      max-width: calc(37.5% - 30px);
+      flex: 0 0 percentage(3/8);
+    }
+    &.col-1 {
+      max-width: calc(12.5% - 10px);
+      flex: 0 0 percentage(1/8);
+    }
+  }
+  &__input {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #bcbcbc;
+    position: relative;
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      &::placeholder {
+        color: #bcbcbc;
+      }
+    }
+    i {
+      color: #bcbcbc;
+    }
+  }
+  &__wrapper {
+    padding: 7px 5px 6px;
+    border: 1px solid #bcbcbc;
+    border-radius: 4px;
+  }
+}
+
+.border-vertical-center {
+  position: relative;
+  &:after {
+    width: 1px;
+    height: 100%;
+    background: #bcbcbc;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
