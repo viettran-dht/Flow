@@ -1097,6 +1097,12 @@ ngx-datetime-picker {
   }
 }
 
+.layout-case {
+  &.active > * {
+    color: #52a1a7 !important;
+  }
+}
+
 .invisible {
   opacity: 0;
   pointer-events: none;
