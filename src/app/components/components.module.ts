@@ -7,6 +7,7 @@ import { TagInputComponent } from './tag-input/tag-input.component';
 import { TagInputModule } from 'ngx-chips';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DirectivesModule } from '../directives/directives.module';
     LoadingInsideBtnComponent,
     SelectCustomComponent,
     TagInputComponent,
+    SkeletonComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { DirectivesModule } from '../directives/directives.module';
     HeaderComponent,
     LoadingInsideBtnComponent,
     SelectCustomComponent,
-    TagInputComponent
+    TagInputComponent,
+    SkeletonComponent
   ]
 })
 export class ComponentsModule { }

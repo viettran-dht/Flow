@@ -1,7 +1,7 @@
 <div class="page-flow page-custom">
   <div class="page-cta">
     <div class="container-custom page-cta__container">
-      <a class="sub-heading page-cta__text" href="#">My Broadcasts<span class="mlr-5">/ </span></a>
+      <a class="sub-heading page-cta__text" (click)="goto('broadcast')">My Broadcasts<span class="mlr-5">/ </span></a>
       <a class="sub-heading page-cta__text active-cta">Add new broadcast</a>
     </div>
   </div>
@@ -10,7 +10,7 @@
     <div class="page-title mb-15">
         <div class="container-custom page-title__container">
             <div class="flex flow-title mb-35">
-              <div class="page-icon"><span class="arrow arrow-left"></span></div>
+              <div class="page-icon" (click)="goback()"><span class="arrow arrow-left"></span></div>
                 <h3 class="title">Add a new broadcast to a single or multiple user groups</h3>
             </div>
             <form class="page-content__form">
