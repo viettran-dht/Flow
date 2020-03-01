@@ -6,6 +6,9 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    img {
+        max-height: 71vh;
+    }
 }
 
 .hero__bg {
@@ -21,8 +24,13 @@
 
 .hero__heading {
     color: #fff;
-    &:nth-child(n + 2) {
-        padding-left: 120px;
+}
+
+.hero__detail {
+    padding-left: 120px;
+    color: #fff;
+    p {
+        max-width: 388px;
     }
 }
 
@@ -36,7 +44,33 @@
 .hero__inner {
     margin-right: 20px;
 }
+
+.hero__btn {
+    width: 150px;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 0;
+    border: 2px solid #E6CD0C;
+    transition: all 0.3s ease-in-out;
+    &:last-child {
+        background: transparent;
+        color: #E6CD0C;
+        &:hover {
+            background: #E6CD0C;
+            color: #fff;
+        }
+    }
+    &:first-child {
+        margin-right: 15px;
+        background: #E6CD0C;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
 .swiper-container {
-  width: 600px;
-  height: 300px;
+  width: 100vw;
 }
