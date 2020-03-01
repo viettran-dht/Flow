@@ -81,12 +81,15 @@ export class AddNewFlowComponent implements OnInit {
     this.addFlowForm = this.fb.group({
       flowName: ['', Validators.required],
       campaignId: ['', Validators.required],
+      campaignName: ['', Validators.required],
       region: [this.userTimezone[0].value, Validators.required],
       tags: [[], Validators.required],
       brandId: ['', Validators.required],
+      brandName: ['', Validators.required],
       flowStartDate: ['', Validators.required],
       notes: [''],
       clientId: ['', Validators.required],
+      clientName: ['', Validators.required],
       flowEndDate: ['', Validators.required],
     });
   }
@@ -100,15 +103,18 @@ export class AddNewFlowComponent implements OnInit {
         //   this.listCampaign = [];
         // }
         this.addFlowForm.get('clientId').setValue(event.Id);
+        this.addFlowForm.get('clientName').setValue(event.Name);
         // this.searchParams.client.fullName = event.Name;
         this.getBrandsByClientId(event.Id);
         break;
       case 'brand':
         this.addFlowForm.get('brandId').setValue(event.Id);
+        this.addFlowForm.get('brandName').setValue(event.Name);
         this.getCampaignByBrandId(event.Id);
         break;
       case 'campaign':
         this.addFlowForm.get('campaignId').setValue(event.Id);
+        this.addFlowForm.get('campaignName').setValue(event.Name);
         break;
     }
   }
@@ -274,10 +280,27 @@ export class AddNewFlowComponent implements OnInit {
       const idToken = await this.currentUser.getIdToken();
       // const res: any = await this.apiService.createApp(this.addFlowForm.value, idToken);
       // console.log(res);
-      // const req = this.addFlowForm.value;
-      // req.appId = res.appId;
-      const appId = '-' + this.helperService.generateRandomUID(19);
-      await this.firebaseService.createApp(appId, this.addFlowForm.value);
+      const req = this.addFlowForm.value;
+      const flowId = '-' + this.helperService.generateRandomUID(19);
+      req.appId = flowId;
+      // const req: any = {
+      //   flowName: this.addFlowForm.value.flowName,
+      //   campaignId: this.addFlowForm.value.campaignId,
+      //   campaignName: this.addFlowForm.value.campaignName,
+      //   region: this.addFlowForm.value.region,
+      //   tags: this.addFlowForm.value.tags,
+      //   brandId: this.addFlowForm.value.brandId,
+      //   brandName: this.addFlowForm.value.brandName,
+      //   flowStartDate: this.addFlowForm.value.flowStartDate,
+      //   notes: this.addFlowForm.value.notes,
+      //   clientId: this.addFlowForm.value.clientId,
+      //   clientName: this.addFlowForm.value.clientName,
+      //   flowEndDate: this.addFlowForm.value.flowEndDate,
+      // };
+      req.isActived = false;
+      req.flowStartDate = this.addFlowForm.value.flowStartDate.toString();
+      req.flowEndDate = this.addFlowForm.value.flowEndDate.toString();
+      await this.firebaseService.createApp(flowId, req);
       this.loading.loadingApp = false;
       this.helperService.alert('success', MESSAGE.createAppSuccess);
       this.goto('terms-of-use');
