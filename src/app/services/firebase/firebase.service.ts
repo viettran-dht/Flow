@@ -58,6 +58,34 @@ export class FirebaseService {
       });
     });
   }
+  getAllRef(ref) {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('/' + ref).on('value', (snapshot) => {
+        const detail = valuesLd(snapshot.val());
+        resolve(detail);
+      });
+    });
+  }
+
+  searchRefByChild(ref, name, child, childId, q) {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('/' + ref).orderByChild(child).equalTo(childId).on('value', (snapshot) => {
+        let detail = valuesLd(snapshot.val());
+        detail = detail.filter(d => d[name].toLowerCase().includes(q.toLowerCase()));
+        resolve(detail);
+      });
+    });
+  }
+
+  searchRef(ref, name, q) {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('/' + ref).on('value', (snapshot) => {
+        let detail = valuesLd(snapshot.val());
+        detail = detail.filter(d => d[name].toLowerCase().includes(q.toLowerCase()));
+        resolve(detail);
+      });
+    });
+  }
   getClients(uId) {
     return new Promise((resolve, reject) => {
       firebase.database().ref('clients/').orderByChild('uId').equalTo(uId).on('value', (snapshot) => {

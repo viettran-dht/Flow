@@ -28,13 +28,19 @@ export class MyFlowsComponent implements OnInit {
       campaignName: '',
       Id: ''
     },
-    status: '',
+    status: {
+      Id: '',
+      Name: ''
+    },
     q: ''
   };
   public listClient = [];
   public listBrand = [];
   public listCampaign = [];
-  public listStatus = [];
+  public listStatus = [
+    { Id: 1, Name: 'activated' },
+    { Id: 2, Name: 'Not activated' }
+  ];
   public loading: any = {
     loadingBrand: false,
     loadingCampaign: false,
@@ -54,13 +60,12 @@ export class MyFlowsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.getAppsByCampaignId('7iPfogab6x');
+    this.getAllApp();
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
   }
 
   select(event, type) {
-    console.log(event);
     switch (type) {
       case 'client':
         if (this.searchParams.client && this.searchParams.client.Id !== event.Id) {
@@ -149,7 +154,56 @@ export class MyFlowsComponent implements OnInit {
   }
 
   search() {
-    console.log(this.searchParams);
+    this.loading.loadingApp = true;
+    if (this.searchParams.client.Id) {
+      // exist client
+      if (this.searchParams.brand.Id) {
+        if (this.searchParams.campaign.Id) {
+          // exist capmaign => search by campaign id
+          this.firebaseService.searchRefByChild(
+            'apps', 'flowName', 'campaignId',
+            this.searchParams.campaign.Id, this.searchParams.q).then((res: any) => {
+              this.listApp = res;
+              this.loading.loadingApp = false;
+            }).catch(err => {
+              this.loading.loadingApp = false;
+              this.listApp = [];
+            });
+        } else {
+          // exist brand => search by brand id
+          this.firebaseService.searchRefByChild(
+            'apps', 'flowName', 'brandId',
+            this.searchParams.brand.Id, this.searchParams.q).then((res: any) => {
+              this.listApp = res;
+              this.loading.loadingApp = false;
+            }).catch(err => {
+              this.loading.loadingApp = false;
+              this.listApp = [];
+            });
+        }
+      } else {
+
+        // does not exist brand => search by client id
+        this.firebaseService.searchRefByChild(
+          'apps', 'flowName', 'clientId',
+          this.searchParams.client.Id, this.searchParams.q).then((res: any) => {
+            this.listApp = res;
+            this.loading.loadingApp = false;
+          }).catch(err => {
+            this.loading.loadingApp = false;
+            this.listApp = [];
+          });
+      }
+    } else {
+      // does exist client
+      this.firebaseService.searchRef('apps', 'flowName', this.searchParams.q).then((res: any) => {
+        this.listApp = res;
+        this.loading.loadingApp = false;
+      }).catch(err => {
+        this.loading.loadingApp = false;
+        this.listApp = [];
+      });
+    }
   }
   clearSearchParams(param) {
     for (const key in this.searchParams) {
@@ -180,5 +234,16 @@ export class MyFlowsComponent implements OnInit {
     date = new Date(date);
     const dateISO = date.toISOString();
     return dateISO;
+  }
+  getAllApp() {
+    this.loading.loadingApp = true;
+    this.firebaseService.getAllRef('apps').then((res: any) => {
+      this.listApp = res;
+      this.loading.loadingApp = false;
+      console.log(this.listApp);
+    }).catch(err => {
+      this.listApp = [];
+      this.loading.loadingApp = false;
+    });
   }
 }

@@ -50,7 +50,7 @@
           <div class="flex-align-center flex-wrap filter-block__row">
             <div class="filter-block__col col-3">
               <div class="flex-center filter-block__input">
-                <input placeholder="Search" [(ngModel)]="searchParams.q">
+                <input placeholder="Search" [(ngModel)]="searchParams.q" (keyup.enter)="search()">
                 <i class="fa fa-search" (click)="search()"></i>
               </div>
             </div>
@@ -97,23 +97,23 @@
       <div class="layout grid-layout" *ngIf="layout === 'grid'">
         <div class="layout__container">
           <div class="layout__list">
-            <div class="layout__item" *ngFor="let app of listApp">
-              <div class="layout__header header-active">
+            <div class="layout__item active" *ngFor="let app of listApp">
+              <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
               <div class="layout__body">
                 <img class="mb-5" src="../../../assets/img/default-card.png" />
                 <div class="layout__content flex-center">
-                  <p class="sub-heading semi-bold">{{app?.flowName}}</p>
                   <div class="layout__des">
-                    <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
-                      <div class="p-meidum">Start on: {{app?.flowStartDate }}</div>
-                      <div class="p-meidum">Ends on: {{app?.flowEndDate  }} </div>
-                    </div>
+                  <p class="sub-heading semi-bold">{{app?.flowName}}</p>
+                  <div class="layout__detail">
+                    <div class="p-meidum">{{app?.clientName}} / {{app?.brandName}} / {{app?.campaignName}}</div>
+                    <div class="p-meidum">Start on: {{app?.flowStartDate }}</div>
+                    <div class="p-meidum">Ends on: {{app?.flowEndDate  }} </div>
                   </div>
+                </div>
                   <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style">EDIT</button>
+                    <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
                     <button class="mb-5 two-up main-style">CLONE</button>
                     <button class="mb-5 full-width secondary-style">SHARE </button>
                     <button class="full-width main-style">PREVIEW</button>
@@ -128,7 +128,7 @@
         <div class="layout__container">
           <div class="layout__list">
             <div class="layout__item" *ngFor="let app of listApp">
-              <div class="layout__header header-active">
+              <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
                 <h1 class="semi-bold sub-heading">ACTIVE</h1>
               </div>
               <div class="layout__body">
@@ -137,7 +137,7 @@
                   <div class="layout__des">
                     <p class="sub-heading semi-bold">{{app?.flowName}}</p>
                     <div class="layout__detail">
-                      <div class="p-meidum">Client Name / Brand Name / Campaign</div>
+                      <div class="p-meidum">{{app?.clientName}} / {{app?.brandName}} / {{app?.campaignName}}</div>
                       <div class="p-meidum">Start on: {{ convertDate(app?.flowStartDate) | date :  'yyyy-MM-dd HH:mm'}}HRS</div>
                       <div class="p-meidum">Ends on: {{ convertDate(app?.flowEndDate) | date :  'yyyy-MM-dd HH:mm'}}HRS </div>
                     </div>
