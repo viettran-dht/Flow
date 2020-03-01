@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-      <div class="layout grid-layout" *ngIf="layout === 'grid'">
+      <div class="layout" [ngClass]="layout === 'grid' ? 'grid-layout' : 'list-layout'">
         <div class="layout__container">
           <div class="layout__list">
             <div class="layout__item active" *ngFor="let app of listApp">
@@ -112,36 +112,6 @@
                     <div class="p-meidum">Ends on: {{app?.flowEndDate  }} </div>
                   </div>
                 </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="layout list-layout" *ngIf="layout === 'list'">
-        <div class="layout__container">
-          <div class="layout__list">
-            <div class="layout__item" *ngFor="let app of listApp">
-              <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                    <p class="sub-heading semi-bold">{{app?.flowName}}</p>
-                    <div class="layout__detail">
-                      <div class="p-meidum">{{app?.clientName}} / {{app?.brandName}} / {{app?.campaignName}}</div>
-                      <div class="p-meidum">Start on: {{ convertDate(app?.flowStartDate) | date :  'yyyy-MM-dd HH:mm'}}HRS</div>
-                      <div class="p-meidum">Ends on: {{ convertDate(app?.flowEndDate) | date :  'yyyy-MM-dd HH:mm'}}HRS </div>
-                    </div>
-                  </div>
                   <div class="flex-wrap flex-between btn-action">
                     <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
                     <button class="mb-5 two-up main-style">CLONE</button>
