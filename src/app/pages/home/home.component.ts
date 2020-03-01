@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 declare const Swiper: any;
 @Component({
-  selector: 'app-example',
-  templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class ExampleComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit {
   name = 'Angular with Swiper';
   mySwiper: any;
   slides = [
