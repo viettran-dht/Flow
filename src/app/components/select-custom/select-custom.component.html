@@ -1,4 +1,4 @@
-<div class="flex-center select-custom" [class.active]="showSelectBox" (click)="showSelectBox = true" (appClickOutside)="clickOutside()">
+<div class="flex-center select-custom" [class.active]="showSelectBox" (click)="showSelectBox = true" (appClickOutside)="clickOutside($event)">
     <input placeholder="{{type}}" (focus)="showSelectBox = true" [(ngModel)]="newData.Name" [disabled]="disabledInput"/>
     <span class="arrow arrow-down"></span>
     <ul>

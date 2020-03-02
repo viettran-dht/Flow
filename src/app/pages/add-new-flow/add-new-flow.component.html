@@ -84,7 +84,7 @@
               <p class="semi-bold sub-heading mb-10">FLOW START DATE</p>
               <div class="block-select flex-align-center flex-between">
                 <!-- <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p> -->
-                <ngx-datetime-picker formControlName="flowStartDate" [(selectedDateTime)]="addFlowForm.value.flowStartDate"></ngx-datetime-picker>
+                <ngx-datetime-picker formControlName="flowStartDate"></ngx-datetime-picker>
                 <span class="arrow arrow-down"></span>
 
               </div>
@@ -132,7 +132,7 @@
                 </button>
                 <button class="btn-primary" (click)="updateApp()" *ngIf="flowId" [disabled]='loading?.loadingApp'>
                   <app-loading-inside-btn *ngIf="loading?.loadingApp"></app-loading-inside-btn>
-                  {{loading?.loadingApp?'':'NEXT'}}
+                  {{loading?.loadingApp?'':'UPDATE'}}
                 </button>
               </div>
             </div>
