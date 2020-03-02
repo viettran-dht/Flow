@@ -9,13 +9,37 @@ body {
   line-height: 1.42;
   color: #535353;
   background: #f9f9f9;
+  overflow: hidden;
   > * {
     font-family: "Barlow", sans-serif !important;
   }
 }
 
+
 .page-custom {
+  max-height: 100vh;
   padding-top: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #52a1a7; 
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #52a1a7; 
+  }
 }
 
 p {
@@ -347,6 +371,10 @@ select {
 
 .mb-40 {
   margin-bottom: 40px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
 }
 
 .mb-60 {

@@ -1,8 +1,10 @@
+@import "../tutorial/tutorial.component.scss";
 .page-home {
     background: transparent linear-gradient(0deg, #48CBD5 0%, #24666B 100%) 0% 0% no-repeat padding-box;
 }
 
 .hero {
+    padding: 20px;
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -35,7 +37,8 @@
 }
 
 .hero__container {
-    width: 100vw;
+    max-width: 978px;
+    margin: 0 auto;
     height: 100vh;
     position: relative;
     z-index: 2;
@@ -73,4 +76,54 @@
 
 .swiper-container {
   width: 100vw;
+}
+
+.intro {
+    padding: 60px 20px;
+}
+
+.intro__container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 30px 50px;
+    border-radius: 18px;
+    background: #fff;
+    text-align: center;
+}
+
+.intro__heading {
+    font-size: 34px;
+    color: #222A41;
+}
+
+.intro__title {
+    color: #222A41;
+}
+
+.intro__video {
+    .tutorial__inner {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+.three-up__container {
+    padding: 0 60px;
+}
+
+.three-up__heading {
+    max-width: 164px;
+    margin: 0 auto 10px;
+    font-size: 24px;
+    color: #56A1A7;
+}
+
+.three-up__col {
+    max-width: 180px;
+}
+
+.three-up__des {
+    font-size: 15px;
+    color: #6D7783;
 }
