@@ -124,8 +124,8 @@
   <div class="tab-wrapper">
   <div class="container-custom">
     <div class="flex mb-15 border-bottom">
-      <p class="sub-title uppercase-text light-grey-text mr-35 pb-20 tab-name active" (click)="changeTab('key-insight')">Key Insight</p>
-      <p class="sub-title uppercase-text light-grey-text pb-20 tab-name" (click)="changeTab('engagement-insight')">engagement Insight</p>
+      <p class="sub-title uppercase-text light-grey-text mr-35 pb-20 tab-name" (click)="changeTab('key-insight')" [ngClass]="{'active': tabActive === 'key-insight'}">Key Insight</p>
+      <p class="sub-title uppercase-text light-grey-text pb-20 tab-name" (click)="changeTab('engagement-insight')" [ngClass]="{'active': tabActive === 'engagement-insight'}">engagement Insight</p>
     </div>
   </div>
   <router-outlet></router-outlet>

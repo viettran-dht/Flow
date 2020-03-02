@@ -13,6 +13,7 @@ import { ISelect } from 'src/app/interfaces/select.interface';
 })
 export class InsightComponent implements OnInit {
   public layout = MY_FLOW_LAYOUT.list;
+  public tabActive = 'key-insight';
   public searchParams: any = {
     client: {
       fullName: '',
@@ -61,8 +62,10 @@ export class InsightComponent implements OnInit {
     this.getAllApp();
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
+    this.changeTab('key-insight');
   }
   changeTab(tab) {
+    this.tabActive = tab;
     this.router.navigate(['insight', tab]);
   }
   select(event, type) {
