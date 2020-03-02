@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { KeyInsightComponent } from './key-insight/key-insight.component';
 import { EngagementInsightComponent } from './engagement-insight/engagement-insight.component';
 import { ChartsModule } from 'ng2-charts';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import { ChartsModule } from 'ng2-charts';
   imports: [
     CommonModule,
     ChartsModule,
+    ComponentsModule,
+    FormsModule,
     RouterModule.forChild([
       {
         path: '', component: InsightComponent, children: [

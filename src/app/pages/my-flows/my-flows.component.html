@@ -56,13 +56,13 @@
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'client'" [list]="listClient" (onselect)="select($event,'client')"></app-select-custom>
+                <app-select-custom [type]="'client'" [disabledInput]="true" [showAddButton]="false" [list]="listClient" (onselect)="select($event,'client')"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
                 <app-select-custom [type]="'brand'" [list]="listBrand"
-                  (onselect)="select($event,'brand')">
+                  (onselect)="select($event,'brand')" [disabledInput]="true" [showAddButton]="false">
                 </app-select-custom>
 
               </div>
@@ -70,12 +70,12 @@
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
                 <app-select-custom [type]="'campaign'" [list]="listCampaign"
-                  (onselect)="select($event,'campaign')"></app-select-custom>
+                  (onselect)="select($event,'campaign')" [disabledInput]="true" [showAddButton]="false"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'status'" [list]="listStatus" (onselect)="select($event,'status')"
+                <app-select-custom [type]="'status'" [disabledInput]="true" [showAddButton]="false" [list]="listStatus" (onselect)="select($event,'status')"
                   ></app-select-custom>
               </div>
             </div>

@@ -216,7 +216,7 @@ export class AddNewFlowComponent implements OnInit {
         Id: brandId,
         brandName,
         uId,
-        clientId: this.addFlowForm.get('clientId')
+        clientId: this.addFlowForm.value.clientId
       };
       await this.firebaseService.createBrand(brandId, brandData);
       this.helperService.alert('success', MESSAGE.createBrandSuccess);
@@ -226,7 +226,7 @@ export class AddNewFlowComponent implements OnInit {
         Name: brandName
       };
       this.listBrand.push(newBrand);
-    } catch {
+    } catch (e) {
       this.loading.addBrand = false;
     }
   }
@@ -239,8 +239,8 @@ export class AddNewFlowComponent implements OnInit {
         Id: campaignId,
         campaignName,
         uId,
-        clientId: this.addFlowForm.get('client'),
-        brandId: this.addFlowForm.get('brand')
+        clientId: this.addFlowForm.value.clientId,
+        brandId: this.addFlowForm.value.brandId
       };
       await this.firebaseService.createCampaign(campaignId, campaignData);
       this.helperService.alert('success', MESSAGE.createCampaignSuccess);
@@ -328,6 +328,9 @@ export class AddNewFlowComponent implements OnInit {
       notes: this.app.notes,
       clientId: this.app.clientId,
       flowEndDate: new Date(this.app.flowEndDate),
+      campaignName: this.app.campaignName,
+      brandName: this.app.brandName,
+      clientName: this.app.clientName
     });
     this.clientId = this.app.clientId;
     this.campaignId = this.app.campaignId;
@@ -338,13 +341,15 @@ export class AddNewFlowComponent implements OnInit {
   }
   async updateApp() {
     this.helperService.markFormGroupTouched(this.addFlowForm);
-    console.log(this.addFlowForm.value);
     if (this.addFlowForm.invalid) {
       return;
     }
     try {
       this.loading.loadingApp = true;
-      await this.firebaseService.updateRef('apps', this.flowId, this.addFlowForm.value);
+      const req = this.addFlowForm.value;
+      req.flowStartDate = this.addFlowForm.value.flowStartDate.toString();
+      req.flowEndDate = this.addFlowForm.value.flowEndDate.toString();
+      await this.firebaseService.updateRef('apps', this.flowId, req);
       this.loading.loadingApp = false;
       this.helperService.alert('success', MESSAGE.updateAppSuccess);
     } catch (e) {

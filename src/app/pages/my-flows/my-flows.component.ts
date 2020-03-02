@@ -78,6 +78,10 @@ export class MyFlowsComponent implements OnInit {
         this.getBrandsByClientId(event.Id);
         break;
       case 'brand':
+        if (this.searchParams.brand && this.searchParams.brand.Id !== event.Id) {
+          this.clearSearchParams('brand');
+          this.listCampaign = [];
+        }
         this.searchParams.brand.Id = event.Id;
         this.searchParams.brand.brandName = event.Name;
         this.getCampaignByBrandId(event.Id);
@@ -206,16 +210,17 @@ export class MyFlowsComponent implements OnInit {
     }
   }
   clearSearchParams(param) {
-    for (const key in this.searchParams) {
-      if (this.searchParams.hasOwnProperty(key) && key !== param) {
-        for (const childKey in this.searchParams[key]) {
-          if (this.searchParams[key].hasOwnProperty(childKey)) {
-            this.searchParams[key][childKey] = '';
-          } else {
-            this.searchParams[key] = '';
-          }
-        }
-      }
+    switch (param) {
+      case 'client':
+        this.searchParams.brand.Id = '';
+        this.searchParams.brand.brandName = '';
+        this.searchParams.campaign.Id = '';
+        this.searchParams.campaign.campaignName = '';
+        break;
+      case 'brand':
+        this.searchParams.campaign.Id = '';
+        this.searchParams.campaign.campaignName = '';
+        break;
     }
   }
   getAppsByCampaignId(campaignId) {
