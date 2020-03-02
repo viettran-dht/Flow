@@ -216,7 +216,7 @@ export class AddNewFlowComponent implements OnInit {
         Id: brandId,
         brandName,
         uId,
-        clientId: this.addFlowForm.get('clientId')
+        clientId: this.addFlowForm.value.clientId
       };
       await this.firebaseService.createBrand(brandId, brandData);
       this.helperService.alert('success', MESSAGE.createBrandSuccess);
@@ -226,7 +226,7 @@ export class AddNewFlowComponent implements OnInit {
         Name: brandName
       };
       this.listBrand.push(newBrand);
-    } catch {
+    } catch(e) {
       this.loading.addBrand = false;
     }
   }
@@ -239,8 +239,8 @@ export class AddNewFlowComponent implements OnInit {
         Id: campaignId,
         campaignName,
         uId,
-        clientId: this.addFlowForm.get('client'),
-        brandId: this.addFlowForm.get('brand')
+        clientId: this.addFlowForm.value.clientId,
+        brandId: this.addFlowForm.value.brandId
       };
       await this.firebaseService.createCampaign(campaignId, campaignData);
       this.helperService.alert('success', MESSAGE.createCampaignSuccess);
