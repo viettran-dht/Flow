@@ -1,6 +1,7 @@
 @import "../tutorial/tutorial.component.scss";
 .page-home {
     background: transparent linear-gradient(0deg, #48CBD5 0%, #24666B 100%) 0% 0% no-repeat padding-box;
+    padding-top: 0;
 }
 
 .page-start {
@@ -20,6 +21,7 @@
     top: -550px;
     background: #FFE200;
     clip-path: polygon(0 0, 100% 33%, 100% 93%, 0% 100%);
+    z-index: 3;
     @media screen and (min-width: 1440px) {
         top: -600px;
     }
@@ -124,6 +126,10 @@
     color: #222A41;
 }
 
+.black-text {
+    color: #222A41;
+}
+
 .intro__title {
     color: #222A41;
 }
@@ -214,6 +220,8 @@
 }
 
 .mansory--chat {
+    position: relative;
+    z-index: 3;
     .mansory__right {
         max-width: 280px;
         margin-left: 0px;
@@ -227,4 +235,44 @@
         font-weight: 800;
         color: #222A41;
     }
+}
+
+.box-block {
+    min-height: 100vh;
+    position: relative;
+}
+
+.box-block__bg {
+    width: 100vw;
+    height: calc(100% + 300px);
+    position: absolute;
+    top: -300px;
+    left: 0;
+    background: transparent linear-gradient(0deg, #7D45C1 0%, #450791 100%) 0% 0% no-repeat padding-box;
+    z-index: 1;
+}
+
+.box-block__container {
+    max-width: 785px;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.box-left {
+    width: 265px;
+    height: 455px;
+    padding: 25px 45px;
+    background: #fff;
+    border-radius: 18px;
+}
+
+.box-right {
+    width: 420px;
+    height: 605px;
+    margin-left: -20px;
+    border-radius: 18px;
+    background-image: radial-gradient(#56A1A7 0%, #205B5F 85%, #1A5458 100%);
 }

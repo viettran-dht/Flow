@@ -109,7 +109,7 @@ select {
 }
 
 .medium-weight {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .light-font {
@@ -276,6 +276,10 @@ select {
   line-height: 1;
 }
 
+.card-large-heading {
+  font-size: 34px;
+}
+
 .opacity-40 {
   opacity: 0.41;
 }
@@ -327,6 +331,10 @@ select {
 
 .ml-10 {
   margin-left: 10px;
+}
+
+.ml-20 {
+  margin-left: 20px;
 }
 
 .mr-5 {
@@ -1164,4 +1172,50 @@ ngx-datetime-picker {
 .invisible {
   opacity: 0;
   pointer-events: none;
+}
+
+.tick {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid #18E480;
+  &:before {
+    content: '';
+    width: 5px;
+    height: 15px;
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% + 1px);
+    transform: translate(-50%, -50%) rotate(45deg) skew(10deg, 0deg);;
+    border-right: 2px solid #18E480;
+    border-bottom: 2px solid #18E480;
+  }
+}
+
+.cross {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid #FF6767;
+  transform: rotate(45deg);
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FF6767;
+  }
+  &:before {
+    width: 2px;
+    height: 15px;
+  }
+  &:after {
+    height: 2px;
+    width: 15px;
+  }
 }
