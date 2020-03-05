@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { MESSAGE } from 'src/app/constant/message';
-
+import {isEmpty} from 'lodash';
 @Component({
   selector: 'app-select-custom',
   templateUrl: './select-custom.component.html',
@@ -48,7 +48,6 @@ export class SelectCustomComponent implements OnInit, OnChanges {
         this.newData.Name = this.selectedData.Name;
         this.newData.Id = this.selectedData.Id;
       }
-      console.log(this.type, this.dataId, this.selectedData, this.list)
     }
   }
   onSelect(data?: any) {
@@ -72,7 +71,7 @@ export class SelectCustomComponent implements OnInit, OnChanges {
   }
   clickOutside(event) {
     this.showSelectBox = false;
-    if (!this.selectedData.Id) {
+    if (!isEmpty(this.selectedData) && !this.selectedData.Id) {
       this.selectedData = {
         Id: '',
         Name: ''
