@@ -322,7 +322,7 @@ export class AddNewFlowComponent implements OnInit {
   goback() {
     this.location.back();
   }
-  async initData() {
+  async initData(isReset?) {
     this.addFlowForm.patchValue({
       flowName: this.app.flowName,
       campaignId: this.app.campaignId,
@@ -341,8 +341,10 @@ export class AddNewFlowComponent implements OnInit {
     this.campaignId = this.app.campaignId;
     this.brandId = this.app.brandId;
     this.tagsData = this.app.tags;
-    await this.getBrandsByClientId(this.clientId);
-    await this.getCampaignByBrandId(this.brandId);
+    if (!isReset) {
+      await this.getBrandsByClientId(this.clientId);
+      await this.getCampaignByBrandId(this.brandId);
+    }
   }
   async updateApp() {
     this.helperService.markFormGroupTouched(this.addFlowForm);
@@ -361,27 +363,5 @@ export class AddNewFlowComponent implements OnInit {
       this.loading.loadingApp = false;
       console.log(e);
     }
-  }
-  async resetData() {
-    this.addFlowForm.patchValue({
-      flowName: this.app.flowName,
-      campaignId: this.app.campaignId,
-      region: this.app.region,
-      tags: this.app.tags,
-      brandId: this.app.brandId,
-      flowStartDate: new Date(this.app.flowStartDate),
-      notes: this.app.notes,
-      clientId: this.app.clientId,
-      flowEndDate: new Date(this.app.flowEndDate),
-      campaignName: this.app.campaignName,
-      brandName: this.app.brandName,
-      clientName: this.app.clientName
-    });
-    this.clientId = this.app.clientId;
-    this.campaignId = this.app.campaignId;
-    this.brandId = this.app.brandId;
-    this.tagsData = this.app.tags;
-    // await this.getBrandsByClientId(this.clientId);
-    // await this.getCampaignByBrandId(this.brandId);
   }
 }

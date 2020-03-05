@@ -126,7 +126,7 @@
                 <button class="btn-transparent black-text sub-heading" type="reset" *ngIf="!flowId">
                   cancel
                 </button>
-                <button class="btn-transparent black-text sub-heading" (click)="resetData()" *ngIf="flowId">
+                <button class="btn-transparent black-text sub-heading" (click)="initData(true)" *ngIf="flowId">
                   cancel
                 </button>
                 <button class="btn-primary" (click)="createApp()" *ngIf="!flowId" [disabled]='loading?.loadingApp'>
