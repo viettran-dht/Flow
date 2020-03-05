@@ -104,17 +104,20 @@ export class AddNewFlowComponent implements OnInit {
         // }
         this.addFlowForm.get('clientId').setValue(event.Id);
         this.addFlowForm.get('clientName').setValue(event.Name);
+        this.clientId = event.Id;
         // this.searchParams.client.fullName = event.Name;
         this.getBrandsByClientId(event.Id);
         break;
       case 'brand':
         this.addFlowForm.get('brandId').setValue(event.Id);
         this.addFlowForm.get('brandName').setValue(event.Name);
+        this.brandId = event.Id;
         this.getCampaignByBrandId(event.Id);
         break;
       case 'campaign':
         this.addFlowForm.get('campaignId').setValue(event.Id);
         this.addFlowForm.get('campaignName').setValue(event.Name);
+        this.campaignId = event.Id;
         break;
     }
   }
@@ -183,7 +186,7 @@ export class AddNewFlowComponent implements OnInit {
         await this.createCampaign(event.Name);
         break;
     }
-    this.select(event, type);
+    // this.select(event, type);
   }
   async createClient(clientName) {
     try {
@@ -202,6 +205,7 @@ export class AddNewFlowComponent implements OnInit {
         Id: clientId,
         Name: clientName
       };
+      this.select(newClient, 'client');
       this.listClient.push(newClient);
     } catch {
       this.loading.addClient = false;
@@ -225,6 +229,7 @@ export class AddNewFlowComponent implements OnInit {
         Id: brandId,
         Name: brandName
       };
+      this.select(newBrand, 'brand');
       this.listBrand.push(newBrand);
     } catch (e) {
       this.loading.addBrand = false;
@@ -249,6 +254,7 @@ export class AddNewFlowComponent implements OnInit {
         Id: campaignId,
         Name: campaignName
       };
+      this.select(newCampaign, 'campaign');
       this.listCampaign.push(newCampaign);
     } catch {
       this.loading.addCampaign = false;
@@ -264,7 +270,6 @@ export class AddNewFlowComponent implements OnInit {
       this.app = res[0];
       this.initData();
       this.loading.loadingApp = false;
-      console.log(this.app);
     }).catch(err => {
       this.loading.loadingApp = false;
     });

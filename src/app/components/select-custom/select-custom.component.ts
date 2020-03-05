@@ -48,7 +48,7 @@ export class SelectCustomComponent implements OnInit, OnChanges {
         this.newData.Name = this.selectedData.Name;
         this.newData.Id = this.selectedData.Id;
       }
-
+      console.log(this.type, this.dataId, this.selectedData, this.list)
     }
   }
   onSelect(data?: any) {
@@ -72,6 +72,14 @@ export class SelectCustomComponent implements OnInit, OnChanges {
   }
   clickOutside(event) {
     this.showSelectBox = false;
+    if (!this.selectedData.Id) {
+      this.selectedData = {
+        Id: '',
+        Name: ''
+      };
+      this.newData = Object.assign({}, this.selectedData);
+      this.onselect.emit(this.selectedData);
+    }
   }
 
 }

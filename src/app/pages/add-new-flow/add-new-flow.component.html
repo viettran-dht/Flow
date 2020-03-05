@@ -3,7 +3,7 @@
     <div class="page-cta">
       <div class="container-custom page-cta__container">
         <a class="sub-heading page-cta__text" href="#">My Flows<span class="mlr-5">/</span></a>
-        <a class="sub-heading page-cta__text active-cta" href="#">Add a New Flow</a>
+        <a class="sub-heading page-cta__text active-cta" href="#">{{!flowId ? 'Add a New Flow' : 'Update Flow'}}</a>
       </div>
     </div>
     <div class="page-title mb-35">
@@ -84,7 +84,7 @@
               <p class="semi-bold sub-heading mb-10">FLOW START DATE</p>
               <div class="block-select flex-align-center flex-between">
                 <!-- <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p> -->
-                <ngx-datetime-picker formControlName="flowStartDate"></ngx-datetime-picker>
+                <ngx-datetime-picker formControlName="flowStartDate" [placeholder]="'YYYY-MM-DD 23:59HRS'"></ngx-datetime-picker>
                 <span class="arrow arrow-down"></span>
 
               </div>
@@ -96,7 +96,7 @@
               <p class="semi-bold sub-heading mb-10">FLOW END DATE</p>
               <div class="block-select flex-align-center flex-between">
                 <!-- <p><span>YYYY-MM-DD </span> <span>23:59HRS</span></p> -->
-                <ngx-datetime-picker formControlName="flowEndDate"></ngx-datetime-picker>
+                <ngx-datetime-picker formControlName="flowEndDate" [placeholder]="'YYYY-MM-DD 23:59HRS'"></ngx-datetime-picker>
                 <span class="arrow arrow-down"></span>
 
               </div>
@@ -118,7 +118,7 @@
               <p class="semi-bold sub-heading mb-10">NOTE</p>
               <div class="block-input">
                 <!-- <div class="multi-input" contenteditable="true">Write Your Notes</div> -->
-                <textarea class="multi-input" formControlName='notes'>Write Your Notes</textarea>
+                <textarea class="multi-input" placeholder="Write Yours Notes" formControlName='notes'>Write Your Notes</textarea>
               </div>
             </div>
             <div class="form-custom__col flex-align-end">

@@ -94,7 +94,7 @@
             <app-skeleton *ngIf="loading?.loadingApp" [numbers]='4'></app-skeleton>
             <div class="layout__item" *ngFor="let app of listApp">
               <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
-                <h1 class="semi-bold sub-heading">ACTIVE</h1>
+                <h1 class="semi-bold sub-heading">{{app?.isActivated ? 'ACTIVE' : 'INACTIVE'}}</h1>
               </div>
               <div class="layout__body">
                 <img class="mb-5" src="../../../assets/img/default-card.png" />
