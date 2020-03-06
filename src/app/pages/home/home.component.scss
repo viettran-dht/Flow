@@ -42,6 +42,22 @@
   }
 }
 
+.hero--bottom {
+  .hero__inner {
+    max-width: 290px;
+    color: #fff;
+    .hero__btn {
+      color: #535353;
+    }
+    .large-heading {
+      line-height: 1;
+    }
+    .p-des {
+      max-width: 170px;
+    }
+  }
+}
+
 .hero__bg {
   width: 100%;
   height: calc(100vh - 40px);
@@ -280,6 +296,10 @@
   position: relative;
   border-radius: 18px;
   background-image: radial-gradient(#56a1a7 0%, #205b5f 85%, #1a5458 100%);
+  button {
+    background: #fff;
+    color: #56A1A7;
+  }
 }
 
 .box-btn {
