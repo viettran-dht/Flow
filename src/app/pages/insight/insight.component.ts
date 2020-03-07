@@ -63,17 +63,6 @@ export class InsightComponent implements OnInit {
     pagination: true
   };
 
-  private scrollbar: SwiperScrollbarInterface = {
-    el: '.swiper-scrollbar',
-    hide: false,
-    draggable: true
-  };
-
-  private pagination: SwiperPaginationInterface = {
-    el: '.swiper-pagination',
-    clickable: true,
-    hideOnClick: false
-  };
   constructor(
     public router: Router,
     public authService: AuthService,
@@ -86,6 +75,7 @@ export class InsightComponent implements OnInit {
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
     this.changeTab('key-insight');
+    this.config.slidesPerView = this.layout === 'grid' ? 5 : 1;
   }
   changeTab(tab) {
     this.tabActive = tab;

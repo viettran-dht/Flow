@@ -93,7 +93,7 @@
       </div>
       <div class="layout grid-layout">
         <div class="layout__container">
-          <div class="layout__list">
+          <div class="layout__list " [ngClass]="layout === 'grid' ? 'grid-layout' : 'list-layout'">
             <app-skeleton *ngIf="loading?.loadingApp" [numbers]='4'></app-skeleton>
             <swiper class="swiper-container" fxFlex="auto" [config]="config" (indexChange)="onIndexChange($event)"
               (swiperTransitionStart)="onSwiperEvent('transitionStart')"
