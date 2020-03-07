@@ -364,3 +364,50 @@
     color: #7d45c1;
   }
 }
+
+.header-home {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 0;
+  z-index: 9;
+  &__container {
+    padding: 0 20px;
+    @media screen and (min-width: 768px) {
+      padding: 0 40px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding: 0 60px;
+    }
+    @media screen and (min-width: 1280px) {
+      padding: 0 90px;
+    }
+    p {
+      height: 40px;
+      margin-right: 3px;
+      line-height: 40px;
+      padding: 0 20px;
+      margin-bottom: 0;
+      color: #fff;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s ease-in-out;
+      &:hover, &.active {
+        background: #fff;
+        color: #7d45c1;
+      }
+    }
+    
+  }
+  &__btn {
+    width: 154px;
+    height: 40px;
+    background: #fff;
+    border: none;
+    color: #450791;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+}

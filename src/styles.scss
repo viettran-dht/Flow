@@ -105,7 +105,7 @@ select {
 }
 
 .semi-bold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .medium-weight {
@@ -270,6 +270,10 @@ select {
   font-size: 20px;
   line-height: 1;
   font-weight: 600;
+}
+
+.logo {
+  font-size: 28px;
 }
 
 .sub-title {
@@ -1235,5 +1239,42 @@ ngx-datetime-picker {
   &:after {
     height: 2px;
     width: 15px;
+  }
+}
+
+.footer-home {
+  padding: 40px 0;
+  background: #fff;
+  color: #535353;
+  &__container {
+    padding: 0 20px;
+    @media screen and (min-width: 768px) {
+      padding: 0 40px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding: 0 60px;
+    }
+    @media screen and (min-width: 1280px) {
+      padding: 0 90px;
+    }
+  }
+  &__row {
+    width: 100%;
+  }
+  .icon-footer {
+    padding: 0 8px;
+    i {
+      color: #369bab;
+      cursor: pointer;
+    }
+  }
+  &__col {
+    flex: 1;
+    padding: 0 8px;
+    a {
+      text-decoration: none;
+      display: block;
+      font-weight: 400;
+    }
   }
 }
