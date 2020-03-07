@@ -13,7 +13,7 @@ import { SwiperConfigInterface, SwiperScrollbarInterface, SwiperPaginationInterf
   styleUrls: ['./insight.component.scss']
 })
 export class InsightComponent implements OnInit {
-  public layout = MY_FLOW_LAYOUT.list;
+  public layout = MY_FLOW_LAYOUT.grid;
   public tabActive = 'key-insight';
   public searchParams: any = {
     client: {
