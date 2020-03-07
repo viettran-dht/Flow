@@ -7,6 +7,7 @@ import { EngagementInsightComponent } from './engagement-insight/engagement-insi
 import { ChartsModule } from 'ng2-charts';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     ChartsModule,
     ComponentsModule,
     FormsModule,
+    SwiperModule,
     RouterModule.forChild([
       {
         path: '', component: InsightComponent, children: [

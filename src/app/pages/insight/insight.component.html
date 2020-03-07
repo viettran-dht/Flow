@@ -50,36 +50,39 @@
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'client'" [disabledInput]="true" [showAddButton]="false" [list]="listClient" (onselect)="select($event,'client')"></app-select-custom>
+                <app-select-custom [type]="'client'" [disabledInput]="true" [showAddButton]="false" [list]="listClient"
+                  (onselect)="select($event,'client')"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'brand'" [list]="listBrand"
-                  (onselect)="select($event,'brand')" [disabledInput]="true" [showAddButton]="false">
+                <app-select-custom [type]="'brand'" [list]="listBrand" (onselect)="select($event,'brand')"
+                  [disabledInput]="true" [showAddButton]="false">
                 </app-select-custom>
 
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'campaign'" [list]="listCampaign"
-                  (onselect)="select($event,'campaign')" [disabledInput]="true" [showAddButton]="false"></app-select-custom>
+                <app-select-custom [type]="'campaign'" [list]="listCampaign" (onselect)="select($event,'campaign')"
+                  [disabledInput]="true" [showAddButton]="false"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1">
               <div class="filter-block__wrapper">
-                <app-select-custom [type]="'status'" [disabledInput]="true" [showAddButton]="false" [list]="listStatus" (onselect)="select($event,'status')"
-                  ></app-select-custom>
+                <app-select-custom [type]="'status'" [disabledInput]="true" [showAddButton]="false" [list]="listStatus"
+                  (onselect)="select($event,'status')"></app-select-custom>
               </div>
             </div>
             <div class="filter-block__col col-1 border-vertical-center">
               <div class="flex-center filter-block__wrapper">
-                <div class="flex-center flex-1 pr-5 layout-case" (click)="layout = 'grid'" [class.active]="layout === 'grid'">
+                <div class="flex-center flex-1 pr-5 layout-case" (click)="layout = 'grid'"
+                  [class.active]="layout === 'grid'">
                   <i class="fa fa-th light-grey-text mr-5" aria-hidden="true"></i>
                   <span class="sub-heading light-grey-text">Grid</span>
                 </div>
-                <div class="flex-center flex-1 pl-5 layout-case" (click)="layout = 'list'" [class.active]="layout === 'list'">
+                <div class="flex-center flex-1 pl-5 layout-case" (click)="layout = 'list'"
+                  [class.active]="layout === 'list'">
                   <i class="fa fa-list light-grey-text mr-5" aria-hidden="true"></i>
                   <span class="sub-heading light-grey-text">List</span>
                 </div>
@@ -88,46 +91,52 @@
           </div>
         </div>
       </div>
-      <div class="layout" [ngClass]="layout === 'grid' ? 'grid-layout' : 'list-layout'">
+      <div class="layout grid-layout">
         <div class="layout__container">
           <div class="layout__list">
             <app-skeleton *ngIf="loading?.loadingApp" [numbers]='4'></app-skeleton>
-            <div class="layout__item" *ngFor="let app of listApp">
-              <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
-                <h1 class="semi-bold sub-heading">{{app?.isActivated ? 'ACTIVE' : 'INACTIVE'}}</h1>
-              </div>
-              <div class="layout__body">
-                <img class="mb-5" src="../../../assets/img/default-card.png" />
-                <div class="layout__content flex-center">
-                  <div class="layout__des">
-                  <p class="sub-heading semi-bold">{{app?.flowName}}</p>
-                  <div class="layout__detail">
-                    <div class="p-meidum">{{app?.clientName}} / {{app?.brandName}} / {{app?.campaignName}}</div>
-                    <div class="p-meidum">Start on: {{app?.flowStartDate }}</div>
-                    <div class="p-meidum">Ends on: {{app?.flowEndDate  }} </div>
+            <swiper class="swiper-container" fxFlex="auto" [config]="config" (indexChange)="onIndexChange($event)"
+              (swiperTransitionStart)="onSwiperEvent('transitionStart')"
+              (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
+              <div class="layout__item" *ngFor="let app of listApp">
+                <div class="layout__header" [ngClass]="{'header-active': app?.isActivated}">
+                  <h1 class="semi-bold sub-heading">{{app?.isActivated ? 'ACTIVE' : 'INACTIVE'}}</h1>
+                </div>
+                <div class="layout__body">
+                  <img class="mb-5" src="../../../assets/img/default-card.png" />
+                  <div class="layout__content flex-center">
+                    <div class="layout__des">
+                      <p class="sub-heading semi-bold">{{app?.flowName}}</p>
+                      <div class="layout__detail">
+                        <div class="p-meidum">{{app?.clientName}} / {{app?.brandName}} / {{app?.campaignName}}</div>
+                        <div class="p-meidum">Start on: {{app?.flowStartDate }}</div>
+                        <div class="p-meidum">Ends on: {{app?.flowEndDate  }} </div>
+                      </div>
+                    </div>
+                    <div class="flex-wrap flex-between btn-action">
+                      <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
+                      <button class="mb-5 two-up main-style">CLONE</button>
+                      <button class="mb-5 full-width secondary-style">SHARE </button>
+                      <button class="full-width main-style">PREVIEW</button>
+                    </div>
                   </div>
                 </div>
-                  <div class="flex-wrap flex-between btn-action">
-                    <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
-                    <button class="mb-5 two-up main-style">CLONE</button>
-                    <button class="mb-5 full-width secondary-style">SHARE </button>
-                    <button class="full-width main-style">PREVIEW</button>
-                  </div>
-                </div>
               </div>
-            </div>
+            </swiper>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="tab-wrapper">
-  <div class="container-custom">
-    <div class="flex mb-15 border-bottom">
-      <p class="sub-title uppercase-text light-grey-text mr-35 pb-20 tab-name" (click)="changeTab('key-insight')" [ngClass]="{'active': tabActive === 'key-insight'}">Key Insight</p>
-      <p class="sub-title uppercase-text light-grey-text pb-20 tab-name" (click)="changeTab('engagement-insight')" [ngClass]="{'active': tabActive === 'engagement-insight'}">engagement Insight</p>
+    <div class="container-custom">
+      <div class="flex mb-15 border-bottom">
+        <p class="sub-title uppercase-text light-grey-text mr-35 pb-20 tab-name" (click)="changeTab('key-insight')"
+          [ngClass]="{'active': tabActive === 'key-insight'}">Key Insight</p>
+        <p class="sub-title uppercase-text light-grey-text pb-20 tab-name" (click)="changeTab('engagement-insight')"
+          [ngClass]="{'active': tabActive === 'engagement-insight'}">engagement Insight</p>
+      </div>
     </div>
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
-</div>
 </div>

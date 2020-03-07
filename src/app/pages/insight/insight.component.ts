@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { ISelect } from 'src/app/interfaces/select.interface';
+import { SwiperConfigInterface, SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-insight',
@@ -51,6 +52,28 @@ export class InsightComponent implements OnInit {
   public listApp = [];
   public currentUser: any;
   public showSelectClient = false;
+  public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 5,
+    keyboard: true,
+    mousewheel: true,
+    scrollbar: true,
+    navigation: true,
+    pagination: true
+  };
+
+  private scrollbar: SwiperScrollbarInterface = {
+    el: '.swiper-scrollbar',
+    hide: false,
+    draggable: true
+  };
+
+  private pagination: SwiperPaginationInterface = {
+    el: '.swiper-pagination',
+    clickable: true,
+    hideOnClick: false
+  };
   constructor(
     public router: Router,
     public authService: AuthService,
@@ -253,5 +276,12 @@ export class InsightComponent implements OnInit {
       this.listApp = [];
       this.loading.loadingApp = false;
     });
+  }
+  onIndexChange(index: number): void {
+    console.log('Swiper index: ', index);
+  }
+
+  onSwiperEvent(event: string): void {
+    console.log('Swiper event: ', event);
   }
 }
