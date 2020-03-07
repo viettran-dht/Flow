@@ -372,6 +372,7 @@
   left: 0;
   padding: 15px 0;
   z-index: 9;
+  background: rgba($color: #4a0d95, $alpha: 0.6);
   &__container {
     padding: 0 20px;
     @media screen and (min-width: 768px) {

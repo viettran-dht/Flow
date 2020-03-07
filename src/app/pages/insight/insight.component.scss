@@ -1,4 +1,10 @@
 @import "../my-flows/my-flows.component.scss";
+.card-count--insight {
+    .card-count__btn {
+        background: #BCBCBC;
+        border-color: #BCBCBC;
+    }
+}
 .box-dropdown {
     &__container {
         padding: 0 10px;

@@ -1,15 +1,16 @@
 .select-custom {
     position: relative;
+    box-sizing: border-box;
     &.active {
         ul {
             height: auto;
         }
     }
     input {
-        width: 100%;
-        flex: 1;
+        width: calc(100% - 10px);
         background: transparent;
         border: none;
+        box-sizing: border-box;
     }
     ul {
         width: calc(100% + 10px);
