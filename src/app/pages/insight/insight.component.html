@@ -12,7 +12,7 @@
           <div class="page-icon"><span class="arrow arrow-left"></span></div>
           <h3 class="title">Select one or multiple Flows to see the insights</h3>
         </div>
-        <div class="card-count">
+        <div class="card-count card-count--insight">
           <div class="card-count__conatiner">
             <p class="semi-bold light-grey-text mb-10">FLOW COUNT</p>
             <div class="flex-wrap card-count__inner mb-10">
@@ -33,7 +33,7 @@
                 <p class="small-sub-heading">Flows</p>
               </div>
             </div>
-            <button class="btn-primary card-count__btn">VIEW MORE INSIGHTS</button>
+            <button class="btn-primary card-count__btn">CLEAR SELECTION</button>
           </div>
         </div>
       </div>
@@ -116,6 +116,8 @@
                     <div class="flex-wrap flex-between btn-action">
                       <button class="mb-5 two-up main-style" (click)="goto('edit-flow/'+app?.appId,app)">EDIT</button>
                       <button class="mb-5 two-up main-style">CLONE</button>
+                      <button class="mb-5 two-up main-style">DELETE</button>
+                      <button class="mb-5 two-up main-style">INSIGHTS</button>
                       <button class="mb-5 full-width secondary-style">SHARE </button>
                       <button class="full-width main-style">PREVIEW</button>
                     </div>
