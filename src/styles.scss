@@ -17,7 +17,7 @@ body {
 
 
 .page-custom {
-  max-height: 100vh;
+  max-height: calc(100vh - 70px);
   padding-top: 70px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -39,6 +39,34 @@ body {
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     background: #52a1a7; 
+  }
+}
+
+.add-filter {
+  .swiper-container {
+    min-width: 100% !important;
+    margin: 0 !important;
+    .s-wrapper.swiper.swiper-container.swiper-container-horizontal {
+      padding: 0 30px !important;
+      min-width: calc(100% - 60px) !important;
+      max-width: calc(100% - 60px) !important;
+    }
+  }
+  .swiper-button-prev, .swiper-button-next {
+    background-image: none;
+    width: 18px;
+    height: 18px;
+    border-top: 3px solid #767880;
+    border-left: 3px solid #767880;
+    &:after {
+      content: none;
+    }
+  }
+  .swiper-button-prev {
+    transform: rotate(-45deg) !important;
+  }
+  .swiper-button-next {
+    transform: rotate(135deg) !important;
   }
 }
 

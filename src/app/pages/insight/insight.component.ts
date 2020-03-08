@@ -55,12 +55,12 @@ export class InsightComponent implements OnInit {
   public config: SwiperConfigInterface = {
     a11y: true,
     direction: 'horizontal',
-    slidesPerView: 5,
+    slidesPerView: 7,
     keyboard: true,
     mousewheel: true,
-    scrollbar: true,
+    scrollbar: false,
     navigation: true,
-    pagination: true
+    pagination: false
   };
 
   constructor(

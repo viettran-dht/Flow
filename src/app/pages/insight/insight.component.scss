@@ -62,3 +62,29 @@
 
 }
 
+.add-filter {
+    max-width: 100vw;
+    overflow: hidden;
+    .page-content {
+        @media screen and (min-width: 768px) {
+            max-width: calc(100vw - 300px);
+        }
+        @media screen and (min-width: 1280px) {
+            max-width: calc(100vw - 331px);
+        }
+        @media screen and (min-width: 1500px) {
+            max-width: calc(100vw - 480px);
+        }
+    }
+    .layout__item {
+      
+        max-height: calc(100% - 60px) !important;
+    }
+    .layout {
+        &.list-layout {
+            .layout__item {
+            max-height: 100% !important;
+            }
+        }
+    }
+}
