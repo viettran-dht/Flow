@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { MY_FLOW_LAYOUT } from 'src/app/constant/constants';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -12,7 +12,7 @@ import { SwiperConfigInterface, SwiperScrollbarInterface, SwiperPaginationInterf
   templateUrl: './insight.component.html',
   styleUrls: ['./insight.component.scss']
 })
-export class InsightComponent implements OnInit {
+export class InsightComponent implements OnInit, OnChanges {
   public layout = MY_FLOW_LAYOUT.grid;
   public tabActive = 'key-insight';
   public searchParams: any = {
@@ -75,6 +75,12 @@ export class InsightComponent implements OnInit {
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
     this.changeTab('key-insight');
+  }
+  ngOnChanges() {
+    console.log(this.config.slidesPerView);
+  }
+  onChangeLayout(layout) {
+    this.layout = layout;
     this.config.slidesPerView = this.layout === 'grid' ? 5 : 1;
   }
   changeTab(tab) {

@@ -76,12 +76,12 @@
             </div>
             <div class="filter-block__col col-1 border-vertical-center">
               <div class="flex-center filter-block__wrapper">
-                <div class="flex-center flex-1 pr-5 layout-case" (click)="layout = 'grid'"
+                <div class="flex-center flex-1 pr-5 layout-case" (click)="onChangeLayout('grid')"
                   [class.active]="layout === 'grid'">
                   <i class="fa fa-th light-grey-text mr-5" aria-hidden="true"></i>
                   <span class="sub-heading light-grey-text">Grid</span>
                 </div>
-                <div class="flex-center flex-1 pl-5 layout-case" (click)="layout = 'list'"
+                <div class="flex-center flex-1 pl-5 layout-case" (click)="onChangeLayout('list')"
                   [class.active]="layout === 'list'">
                   <i class="fa fa-list light-grey-text mr-5" aria-hidden="true"></i>
                   <span class="sub-heading light-grey-text">List</span>
