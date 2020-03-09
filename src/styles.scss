@@ -40,6 +40,10 @@ body {
   &::-webkit-scrollbar-thumb:hover {
     background: #52a1a7; 
   }
+  &.page-home {
+    max-height: 100vh;
+    padding-top: 0;
+  }
 }
 
 .add-filter {
