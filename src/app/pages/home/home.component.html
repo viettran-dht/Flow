@@ -5,10 +5,10 @@
         <img src="../../../assets/img/white-logo.png" />
       </a>
       <div class="flex">
-        <p>How It Works</p>
-        <p>Features</p>
-        <p>FlowBot</p>
-        <p>Plans</p>
+        <p (click)="scrollTo(howItWork)">How It Works</p>
+        <p (click)="scrollTo(feature)">Features</p>
+        <p (click)="scrollTo(flowBot)">FlowBot</p>
+        <p (click)="scrollTo(plans)">Plans</p>
         <p>Thank You</p>
         <button class="header-home__btn">Start Flowing</button>
       </div>
@@ -34,8 +34,8 @@
                     and retargeting.
                   </p>
                   <div class="flex-align-center">
-                    <button class="hero__btn">SIGN UP NOW</button>
-                    <button class="hero__btn">LOGIN</button>
+                    <button class="hero__btn" (click)="goto('sign-up')">SIGN UP NOW</button>
+                    <button class="hero__btn" (click)="goto('login')">LOGIN</button>
                   </div>
                 </div>
               </div>
@@ -57,8 +57,8 @@
                     and retargeting.
                   </p>
                   <div class="flex-align-center">
-                    <button class="hero__btn">SIGN UP NOW</button>
-                    <button class="hero__btn">LOGIN</button>
+                    <button class="hero__btn" (click)="goto('sign-up')">SIGN UP NOW</button>
+                    <button class="hero__btn" (click)="goto('login')">LOGIN</button>
                   </div>
                 </div>
               </div>
@@ -80,8 +80,8 @@
                     and retargeting.
                   </p>
                   <div class="flex-align-center">
-                    <button class="hero__btn">SIGN UP NOW</button>
-                    <button class="hero__btn">LOGIN</button>
+                    <button class="hero__btn" (click)="goto('sign-up')">SIGN UP NOW</button>
+                    <button class="hero__btn" (click)="goto('login')">LOGIN</button>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,8 @@
         </div>
       </div>
     </section>
-    <section class="intro">
+    <!-- how it work section -->
+    <section class="intro" #howItWork>
       <div class="intro__container">
         <p class="p-large mb-5 intro__title">How it works?</p>
         <h1 class="mb-50 intro__heading">It's simple and fast</h1>
@@ -168,8 +169,10 @@
         </div>
       </div>
     </section>
+    <!-- end how it work section -->
+
   </div>
-  <div class="page-end">
+  <div class="page-end" #feature>
     <div class="page-end-bg"></div>
     <div class="mansory">
       <div class="mansory__container">
@@ -247,7 +250,8 @@
         </div>
       </div>
     </div>
-    <div class="mansory mansory--chat">
+    <!-- flow bot section -->
+    <div class="mansory mansory--chat" #flowBot>
       <div class="mansory__container">
         <div class="flex-between flex-align-center">
           <div class="mansory__right">
@@ -266,7 +270,10 @@
         </div>
       </div>
     </div>
-    <section class="box-block">
+    <!--end flow bot section -->
+
+    <!-- plans section -->
+    <section class="box-block" #plans>
       <div class="box-block__bg"></div>
       <div class="box-block__container">
         <p class="p-large">Pricing</p>
@@ -359,7 +366,7 @@
                     GRETZKY, Wayne
                   </p>
                   <div class="flex-align-center">
-                    <button class="hero__btn">SIGN UP NOW</button>
+                    <button class="hero__btn" (click)="goto('sign-up')">SIGN UP NOW</button>
                   </div>
               </div>
               <img src="../../../assets/img/hero-bottom.png" />
@@ -369,6 +376,8 @@
       </div>
     </section>
     </section>
+    <!-- end plans section -->
+
   </div>
   <footer class="footer-home">
     <div class="footer-home__container">

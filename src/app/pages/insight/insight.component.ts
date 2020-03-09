@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { MY_FLOW_LAYOUT } from 'src/app/constant/constants';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { ISelect } from 'src/app/interfaces/select.interface';
+import { SwiperConfigInterface, SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-insight',
   templateUrl: './insight.component.html',
   styleUrls: ['./insight.component.scss']
 })
-export class InsightComponent implements OnInit {
-  public layout = MY_FLOW_LAYOUT.list;
+export class InsightComponent implements OnInit, OnChanges {
+  public layout = MY_FLOW_LAYOUT.grid;
   public tabActive = 'key-insight';
   public searchParams: any = {
     client: {
@@ -51,6 +52,17 @@ export class InsightComponent implements OnInit {
   public listApp = [];
   public currentUser: any;
   public showSelectClient = false;
+  public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 7,
+    keyboard: true,
+    mousewheel: true,
+    scrollbar: false,
+    navigation: true,
+    pagination: false
+  };
+
   constructor(
     public router: Router,
     public authService: AuthService,
@@ -63,6 +75,13 @@ export class InsightComponent implements OnInit {
     this.getClients();
     this.currentUser = await this.authService.getCurrentUser();
     this.changeTab('key-insight');
+  }
+  ngOnChanges() {
+    console.log(this.config.slidesPerView);
+  }
+  onChangeLayout(layout) {
+    this.layout = layout;
+    this.config.slidesPerView = this.layout === 'grid' ? 5 : 1;
   }
   changeTab(tab) {
     this.tabActive = tab;
@@ -253,5 +272,12 @@ export class InsightComponent implements OnInit {
       this.listApp = [];
       this.loading.loadingApp = false;
     });
+  }
+  onIndexChange(index: number): void {
+    console.log('Swiper index: ', index);
+  }
+
+  onSwiperEvent(event: string): void {
+    console.log('Swiper event: ', event);
   }
 }
