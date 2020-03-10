@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  public showChatbox = false;
   constructor(
     private router: Router
   ) { }
@@ -17,6 +17,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate([page]);
   }
   scrollTo(el: HTMLElement) {
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 }

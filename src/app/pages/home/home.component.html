@@ -16,8 +16,8 @@
   </header>
   <div class="chatbot">
     <div class="chatbot__container">
-      <img src="../../../assets/img/chatbot.png" />
-      <div class="chatbot__inner">
+      <img src="../../../assets/img/chatbot.png" (click)="showChatbox = !showChatbox" />
+      <div class="chatbot__inner" *ngIf="showChatbox">
         <div class="chatbot__header">
           <h2 class="large-title">Hello !</h2>
         </div>
