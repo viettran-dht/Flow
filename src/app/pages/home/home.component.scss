@@ -412,3 +412,62 @@
     text-transform: capitalize;
   }
 }
+
+.chatbot {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+  img {
+    position: relative;
+    z-index: 5;
+  }
+  &__container {
+    position: relative;
+  }
+  &__inner {
+    width: 268px;
+    position: absolute;
+    right: 50%;
+    bottom: 10px;
+  }
+  &__header {
+    padding: 12px 10px 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: #D3196C;
+    color: #fff;
+    text-align: center;
+  }
+  &__body {
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .conversation-block {
+    flex: 1;
+    padding: 15px;
+  }
+  &__btn {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #D3196C;
+    color: #fff;
+    box-sizing: border-box;
+    border: 1px solid #D3196C;
+  }
+  &__footer {
+    border-top: 1px solid #bcbcbc;
+    textarea {
+      width: 100%;
+      padding: 10px 20px 0 15px;
+      box-sizing: border-box;
+      border: 0;
+    }
+  }
+}
