@@ -18,6 +18,7 @@ body {
 
 .page-custom {
   max-height: calc(100vh - 70px);
+  height: 100vh;
   padding-top: 70px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1139,6 +1140,75 @@ ngx-datetime-picker {
   .ngx-picker {
     button {
       display: none;
+    }
+    .calendar {
+      background: #52a1a7;
+      .calendar--days-of-week {
+        background-color: #ececec;
+      }
+      .ngx-picker--btn__selected {
+        background: #52a1a7;
+        color:#fff !important;
+        &:hover {
+          color: #fff !important;
+        }
+      } 
+      .time-picker {
+        background: #ececec;
+        color: #52a1a7;
+        button {
+          color: #52a1a7;
+        }
+      }
+      .time--values {
+        justify-content: left;
+        background: #fff;
+      }
+      .time--value {
+        background: #fff;
+        &:hover {
+          background: #52a1a7;
+          color: #fff;
+        }
+      }
+      .calendar--footer {
+        background: #75bec3;
+      }
+      .calendar--day, .time--value {
+        width: 36.5px;
+        height: 36px;
+        padding: 0;
+        font-size: 13px;
+        line-height: 36px;
+        &.calendar--day__selected {
+          background: #52a1a7;
+          color: #fff;
+          border-radius: 50%;
+        }
+      }
+      .calendar--day-of-week {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 13px;
+        color: #929292;
+      }
+      button {
+        display: inline-block;
+      }
+      .ngx-picker--btn {
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        &:hover {
+          color:#52a1a7;
+        }
+      }
+      .ngx-picker--btn.ngx-picker--btn__month {
+        padding-right: 0;
+      }
+      .ngx-picker--btn.ngx-picker--btn__year {
+        padding-left: 2px;
+      }
     }
   }
 }
